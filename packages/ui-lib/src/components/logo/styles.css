@@ -1,7 +1,7 @@
 .logo {
   font-size: var(--font-xl);
   color: var(--primary-50);
-  background-color: var(--black);
+  backdrop-filter: invert(8%);
   border-radius: 50%;
   rotate: 15deg;
   padding: var(--spacing-1);

@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: color-mix(in oklab, var(--black) 80%, transparent);
+  background: var(--black);
   padding-block: var(--spacing-4);
 }
 
