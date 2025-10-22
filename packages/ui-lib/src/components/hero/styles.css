@@ -1,0 +1,30 @@
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__container {
+  position: relative; 
+  z-index: 10;
+  text-align: center; 
+}
+
+.hero__container__title {
+  margin-bottom: var(--spacing-6); 
+  font-size: var(--font-xxl);
+  line-height: 1.2em; 
+  font-weight: 700; 
+
+}
+
+.hero__container__subtitle {
+  margin-bottom: var(--spacing-8); 
+  max-width: 42rem; 
+  margin-inline: auto;
+  font-size: var(--font-xl);
+  line-height: 1.2em; 
+}

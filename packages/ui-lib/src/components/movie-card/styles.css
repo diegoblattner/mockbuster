@@ -1,0 +1,18 @@
+.movie-card {
+  width: 200px;
+  min-width: 200px;
+  height: 250px;
+  border: 1px solid var(--gray-20);
+}
+
+.movie-card__img {
+  
+}
+
+.movie-card__title {
+  
+}
+
+.movie-card__year {
+  
+}
