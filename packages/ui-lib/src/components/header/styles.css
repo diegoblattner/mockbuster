@@ -1,7 +1,7 @@
 .header {
   display: flex;
-  background-color: color-mix(in oklab, var(--gray-80) 80%, transparent);
-  padding: var(--spacing-4);
+  background-color: color-mix(in oklab, var(--black) 80%, transparent);
+  padding-block: var(--spacing-4);
 }
 
 .header__brand {

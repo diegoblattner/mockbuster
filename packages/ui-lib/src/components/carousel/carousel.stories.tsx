@@ -14,7 +14,6 @@ const Div = () => (
 			border: "1px solid black",
 			minWidth: "200px",
 			height: "250px",
-			// overflow: "hidden",
 			padding: "16px",
 			background: "white",
 		}}

@@ -10,6 +10,7 @@
 }
 
 .carousel__arrow {
+  font-size: 2rem;
   cursor: pointer;
   display: flex; 
   position: absolute; 
@@ -21,8 +22,8 @@
   width: 2.5rem; 
   height: 2.5rem; 
   background-color: var(--white);
-  color: var(--black);
-  opacity: 0.8;
+  color: var(--gray-80);
+  opacity: 0.7;
   transition-property: scale;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms; 

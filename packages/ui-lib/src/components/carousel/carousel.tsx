@@ -6,12 +6,13 @@ type CarouselProps = Readonly<{
 	children: ReactNode;
 }>;
 
+const SCROLL_STEP = 400;
 export function Carousel({ title, children }: CarouselProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const scroll = useCallback((direction: "left" | "right") => {
 		if (containerRef.current) {
-			const scrollAmount = direction === "left" ? -300 : 300;
+			const scrollAmount = direction === "left" ? -SCROLL_STEP : SCROLL_STEP;
 			containerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
 		}
 	}, []);

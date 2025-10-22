@@ -59,15 +59,15 @@
 body {
   font-family: var(--font-main);
   color: light-dark(var(--black), var(--white));
-  background-color: light-dark(var(--white), var(--black));
+  background-color: light-dark(var(--white), var(--gray-80));
 }
 
 :root.dark, body.dark {
   color: var(--white);
-  background: var(--black);
+  background-color: var(--gray-80);
 }
 
 :root.light, body.light {
   color: var(--black);
-  background: var(--white);
+  background-color: var(--white);
 }
