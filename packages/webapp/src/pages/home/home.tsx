@@ -17,7 +17,7 @@ type Movie = {
 };
 
 function useWatchList() {
-	const [watchList, setWatchList] = useState<Movie[]>([]);
+	const [watchList] = useState<Movie[]>([]);
 
 	return watchList;
 }
@@ -26,6 +26,7 @@ export function Home() {
 	const watchList = useWatchList();
 	return (
 		<div>
+			<title>Mockbuster</title>
 			<Header
 				logo={<Logo />}
 				title="Mockbuster"
