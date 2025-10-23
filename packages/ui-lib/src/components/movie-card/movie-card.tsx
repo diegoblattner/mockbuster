@@ -16,10 +16,15 @@ export function MovieCard({
 	return (
 		<div className="movie-card">
 			<div className="movie-card__img">
-				<img src={poster_path} alt={title} />
+				<img
+					src={`http://image.tmdb.org/t/p/w200/${poster_path}`}
+					alt={title}
+				/>
 			</div>
 			<div className="movie-card__title">{title}</div>
-			<div className="movie-card__year">{release_date}</div>
+			<div className="movie-card__year">
+				{new Date(release_date).toLocaleDateString()}
+			</div>
 		</div>
 	);
 }

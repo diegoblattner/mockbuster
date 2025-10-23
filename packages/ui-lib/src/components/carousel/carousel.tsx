@@ -19,25 +19,28 @@ export function Carousel({ title, children }: CarouselProps) {
 
 	return (
 		<div className="carousel">
-			<h3 className="carousel__header">{title}</h3>
+			<h3 className="carousel__header">
+				<span>{title}</span>
+				<div className="carousel__arrows-container">
+					<button
+						type="button"
+						aria-label="scroll backwards"
+						onClick={() => scroll("left")}
+						className="carousel__arrows-container__arrow"
+					>
+						‹
+					</button>
 
-			<button
-				type="button"
-				aria-label="scroll backwards"
-				onClick={() => scroll("left")}
-				className="carousel__arrow"
-			>
-				‹
-			</button>
-
-			<button
-				type="button"
-				aria-label="scroll forwards"
-				onClick={() => scroll("right")}
-				className="carousel__arrow carousel__arrow--forward"
-			>
-				›
-			</button>
+					<button
+						type="button"
+						aria-label="scroll forwards"
+						onClick={() => scroll("right")}
+						className="carousel__arrows-container__arrow carousel__arrows-container__arrow--forward"
+					>
+						›
+					</button>
+				</div>
+			</h3>
 
 			<div ref={containerRef} className="carousel__container">
 				{children}
