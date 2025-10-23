@@ -6,10 +6,8 @@
   "author": "diblattner@gmail.com",
   "main": "index.ts",
   "scripts": {
-    "dev": "npm run build:for-server -w ../../packages/webapp && node index.ts",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build src/entry-server.tsx --outDir dist/server",
+    "dev": "npm run build:for-server -w ../../packages/webapp && node --watch --watch-path=./src src/index.ts",
+    "build": "npm run build:client && vite build --outDir dist/server --ssr src/index.ts",
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
