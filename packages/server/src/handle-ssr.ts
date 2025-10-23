@@ -1,6 +1,9 @@
 import type { Express, Response } from "express";
 import type { ReactNode } from "react";
 import { renderToPipeableStream } from "react-dom/server";
+import { serverPropsTagId } from "shared";
+import type { AppProps } from "webapp";
+import { fetchMoviesByGenre } from "./api-tmdb/movies.ts";
 import { htmlTemplateEnd, htmlTemplateStart } from "./html-template.ts";
 
 const TIMEOUT = 20000;
@@ -28,7 +31,10 @@ function handleTimeout(res: Response, abort: (reason?: unknown) => void) {
 	});
 }
 
-export function registerSSRHandler(app: Express, reactNode: ReactNode) {
+export function registerSSRHandler(
+	app: Express,
+	appRenderer: (props: AppProps) => ReactNode,
+) {
 	// Serve the app
 	app.use("*all", async (req, res) => {
 		let didError = false;
@@ -40,10 +46,13 @@ export function registerSSRHandler(app: Express, reactNode: ReactNode) {
 		res.statusCode = getStatusCode();
 		setHeader(res, "Content-Type", "text/html");
 		setHeader(res, "Transfer-Encoding", "chunked");
+		const movies = await fetchMoviesByGenre(28);
+		const appProps: AppProps = { initialMovies: movies?.results ?? [] };
 
 		// streams the app
-		const { pipe, abort } = renderToPipeableStream(reactNode, {
-			// bootstrapScripts: [hydrateScriptUrl],
+		const { pipe, abort } = renderToPipeableStream(appRenderer(appProps), {
+			// TODO check if this gets serialized correctly to avoid XXS:
+			bootstrapScriptContent: `window["${serverPropsTagId}"] = ${JSON.stringify(appProps)}`,
 
 			onShellReady() {
 				res.statusCode = getStatusCode();
@@ -61,7 +70,7 @@ export function registerSSRHandler(app: Express, reactNode: ReactNode) {
 				}
 			},
 			onAllReady() {
-				console.log("All content ready:: " + req.baseUrl);
+				console.log("All content ready: " + req.baseUrl);
 				streamComplete = true;
 
 				if (!res.headersSent) {

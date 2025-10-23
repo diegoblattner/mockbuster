@@ -10,8 +10,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-		title: "Mockbuster carousel",
-		img: "noope.jpg",
-		year: "2025",
+		title: "Movie one",
+		poster_path: "/noope.jpg",
+		release_date: "2025",
+		adult: false,
+		backdrop_path: "/noope2.jpg",
+		genre_ids: [28],
+		id: "1",
+		original_language: "en",
+		original_title: "Movie one",
+		overview: "1000 words to describe",
+		popularity: 50,
+		video: false,
+		vote_average: 45,
+		vote_count: 1907,
 	},
 };

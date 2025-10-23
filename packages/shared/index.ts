@@ -1,3 +1,4 @@
+export const serverPropsTagId = "server-props-for-hydration";
 export const language = "en";
 
 type Values<T> = T extends Record<number, infer U> ? U : never;

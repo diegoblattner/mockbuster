@@ -42,7 +42,7 @@ const vite = await createViteServer({
 // required, and provides efficient invalidation similar to HMR.
 const { appRenderer } = await vite.ssrLoadModule("src/app-renderer.tsx");
 
-registerSSRHandler(app, appRenderer());
+registerSSRHandler(app, appRenderer);
 
 app.listen(port, () =>
 	console.log(`Server started at http://localhost:${port}`),

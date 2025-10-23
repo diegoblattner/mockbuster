@@ -1,5 +1,6 @@
+import type { ComponentProps } from "react";
 import App from "webapp";
 
-export function appRenderer() {
-	return <App />;
+export function appRenderer(props: ComponentProps<typeof App>) {
+	return <App {...props} />;
 }

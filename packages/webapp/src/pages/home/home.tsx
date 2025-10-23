@@ -1,39 +1,23 @@
 import { useState } from "react";
-import { Carousel, Container, Header, Hero, Logo, MovieCard } from "ui-lib";
+import type { ApiMovie } from "shared";
+import { Carousel, Container, Hero, MovieCard, Page } from "ui-lib";
 
 const HOME_ROUTE = "/";
 
-type Category = "Romance" | "Horror" | "Comedy";
-
-type Movie = {
-	id: string;
-	title: string;
-	year: string;
-	synopisis: string;
-	img: string;
-	trailer: string;
-	category: Category;
-	watched: boolean;
-};
-
 function useWatchList() {
-	const [watchList] = useState<Movie[]>([]);
+	const [watchList] = useState<ApiMovie[]>([]);
 
 	return watchList;
 }
 
-export function Home() {
+type HomeProps = Readonly<{
+	movies: ApiMovie[];
+}>;
+
+export function Home({ movies = [] }: HomeProps) {
 	const watchList = useWatchList();
 	return (
-		<div>
-			<title>Mockbuster</title>
-			<Header
-				logo={<Logo />}
-				title="Mockbuster"
-				logoHref={HOME_ROUTE}
-				logoAriaLabel={"home page"}
-				links={null}
-			/>
+		<Page logoHref={HOME_ROUTE} logoAriaLabel={"home page"} links={null}>
 			<Hero
 				mainText={
 					<>
@@ -57,17 +41,14 @@ export function Home() {
 			<section>
 				<Container>
 					<Carousel title="Romance">
-						{new Array(10).fill("").map((_, i) => (
-							<MovieCard
-								key={i}
-								img={"img" + i}
-								title={"title " + i}
-								year="2010"
-							/>
-						))}
+						{movies.length > 0 ? (
+							movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
+						) : (
+							<p>No movies found...</p>
+						)}
 					</Carousel>
 				</Container>
 			</section>
-		</div>
+		</Page>
 	);
 }
