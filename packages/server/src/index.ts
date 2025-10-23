@@ -3,7 +3,8 @@ import compression from "compression";
 import express from "express";
 import sirv from "sirv";
 import { createServer as createViteServer } from "vite";
-import { registerMoviesHandlers } from "./api/movies.ts";
+import { errorHandlerRouter } from "./api/common.ts";
+import { moviesRouter } from "./api/movies.ts";
 import { registerSSRHandler } from "./handle-ssr.ts";
 
 process.loadEnvFile("../../.env");
@@ -26,9 +27,7 @@ if (isProduction) {
 // static assets
 app.use(base, sirv("dist/client", { extensions: [] }));
 
-const router = express.Router();
-registerMoviesHandlers(router);
-app.use("/api", router);
+app.use("/api", [moviesRouter, errorHandlerRouter]);
 
 const vite = await createViteServer({
 	server: { middlewareMode: true },

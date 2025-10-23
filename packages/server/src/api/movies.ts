@@ -1,16 +1,19 @@
-import type { Router } from "express";
+import express from "express";
 import { fetchMoviesByGenre } from "../api-tmdb/movies.ts";
+import { ClientSafeError, withErrorHandler } from "./common.ts";
 
-export function registerMoviesHandlers(router: Router) {
-	router.get("/movies", async (req, res) => {
-		try {
-			const result = await fetchMoviesByGenre(28);
+const moviesRouter = express.Router();
 
-			res.json(result);
-		} catch (e) {
-			// unhandled error
-			console.error(e);
-			res.status(500).json({ error: "Failed to fetch movies..." });
-		}
-	});
-}
+moviesRouter.get(
+	"/genres/:genreId/movies",
+	withErrorHandler(async (req, res) => {
+		const genreId = Number(req.params.genreId);
+
+		if (!genreId) throw new ClientSafeError(400, "Invalid genreId");
+
+		const result = await fetchMoviesByGenre(genreId);
+		res.json(result);
+	}),
+);
+
+export { moviesRouter };

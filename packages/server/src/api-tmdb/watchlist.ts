@@ -1,9 +1,5 @@
-import {
-	type ApiListResult,
-	type ApiMovie,
-	type ApiStatus,
-	fetchTmdbApi,
-} from "./common.ts";
+import type { ApiListResult, ApiMovie, ApiStatus } from "shared";
+import { fetchTmdbApi } from "./common.ts";
 
 export async function fetchWatchlist(
 	accId: string,

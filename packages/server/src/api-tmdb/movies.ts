@@ -1,15 +1,7 @@
-import {
-	type ApiGenreId,
-	type ApiListResult,
-	type ApiMovie,
-	fetchTmdbApi,
-	language,
-} from "./common.ts";
+import { type ApiListResult, type ApiMovie, language } from "shared";
+import { fetchTmdbApi } from "./common.ts";
 
-export async function fetchMoviesByGenre(
-	genreId: ApiGenreId,
-	page: number = 1,
-) {
+export async function fetchMoviesByGenre(genreId: number, page: number = 1) {
 	const params = new URLSearchParams({
 		include_adult: "false",
 		with_genres: genreId.toString(),
