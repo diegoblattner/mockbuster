@@ -25,7 +25,7 @@ export function MovieCard({
 				/>
 			</div>
 			<div className="movie-card__title">{title}</div>
-			<div className="movie-card__year">
+			<div className="movie-card__year" suppressHydrationWarning>
 				{new Date(release_date).toLocaleDateString()}
 			</div>
 		</div>
