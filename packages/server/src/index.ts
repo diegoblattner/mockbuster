@@ -7,7 +7,7 @@ import { errorHandlerRouter } from "./api/common.ts";
 import { moviesRouter } from "./api/movies.ts";
 import { registerSSRHandler } from "./handle-ssr.ts";
 
-process.loadEnvFile("../../.env");
+process.loadEnvFile("../../.env"); // loads .env from the root diretory
 
 assert(!!process.env.TMDB_API_TOKEN, "TMDB_API_TOKEN not set in .env");
 
@@ -19,6 +19,19 @@ const isProduction = process.env.NODE_ENV === "production";
 const port = Number(process.env.PORT ?? 5174);
 const base = process.env.BASE_URL ?? "/";
 
+const vite = await createViteServer({
+	server: { middlewareMode: true },
+	appType: "custom",
+});
+
+// Use vite's connect instance as middleware.
+app.use(vite.middlewares);
+
+// Load the server entry.ssrLoadModule automatically transforms
+// ESM source code to be usable in Node.js! There is no bundling
+// required, and provides efficient invalidation similar to HMR.
+const { appRenderer } = await vite.ssrLoadModule("src/app-renderer.tsx");
+
 // set up compression
 if (isProduction) {
 	app.use(compression());
@@ -28,19 +41,6 @@ if (isProduction) {
 app.use(base, sirv("dist/client", { extensions: [] }));
 
 app.use("/api", [moviesRouter, errorHandlerRouter]);
-
-const vite = await createViteServer({
-	server: { middlewareMode: true },
-	appType: "custom",
-});
-
-// Use vite's connect instance as middleware.
-// app.use(vite.middlewares);
-
-// Load the server entry.ssrLoadModule automatically transforms
-// ESM source code to be usable in Node.js! There is no bundling
-// required, and provides efficient invalidation similar to HMR.
-const { appRenderer } = await vite.ssrLoadModule("src/app-renderer.tsx");
 
 registerSSRHandler(app, appRenderer);
 
