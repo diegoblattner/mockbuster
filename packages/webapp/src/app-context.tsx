@@ -3,7 +3,7 @@ import {
 	type Dispatch,
 	type ReactNode,
 	type SetStateAction,
-	useContext,
+	use,
 	useState,
 } from "react";
 import type { ApiMovie, ApiMovieDetails } from "shared";
@@ -32,7 +32,7 @@ export function AppProvider({
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useAppContext() {
-	const data = useContext(AppContext);
+	const data = use(AppContext);
 
 	if (!data) throw new Error("useAppContext used outside of AppProvide");
 
