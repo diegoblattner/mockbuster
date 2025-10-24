@@ -5,6 +5,8 @@ export { AppRoutes } from "./routes.ts";
 
 export const serverPropsTagId = "server-props-for-hydration";
 export const language = "en";
+// TODO should come from the logged user
+export const accountId = 1234;
 
 type Values<T> = T extends Record<number, infer U> ? U : never;
 type Keys<T> = T extends Record<infer U, string> ? U : never;
@@ -51,6 +53,11 @@ export const homeCategories: Genre[] = [
 export type ApiListResult<T> = {
 	page: number;
 	results: T[];
+};
+
+export type ApiListResultTotal<T> = ApiListResult<T> & {
+	total_pages: number;
+	total_results: number;
 };
 
 export type ApiMovie = {

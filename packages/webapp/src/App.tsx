@@ -28,7 +28,7 @@ export default function App({
 }: AppProps) {
 	return (
 		<AppProvider {...ctx}>
-			<RouterComponent location={url!}>
+			<RouterComponent location={url}>
 				<Routes>
 					<Route index Component={Home} loader={loadHomeData} />
 					<Route

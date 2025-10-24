@@ -1,13 +1,24 @@
 import type { Request } from "express";
+import { accountId, homeCategories } from "shared";
 import type { AppProps } from "webapp";
 import { fetchMovie, fetchMoviesByGenre } from "./api-tmdb/movies.ts";
+import { fetchWatchlist } from "./api-tmdb/watchlist.ts";
 
-async function loadHomeData(req: Request): Promise<AppProps> {
-	const movies = await fetchMoviesByGenre(28);
+async function loadHomeData(_req: Request): Promise<AppProps> {
+	const [movies, watchlist] = await Promise.all([
+		fetchMoviesByGenre(homeCategories[0].id),
+		fetchWatchlist(accountId),
+	]);
 
 	return {
 		url: "/",
-		initialMovies: movies?.results ?? [],
+		actionMovies: movies?.results ?? [],
+		watchlist: watchlist ?? {
+			page: 1,
+			results: [],
+			total_pages: 0,
+			total_results: 0,
+		},
 		selectedMovie: undefined,
 	};
 }
@@ -15,11 +26,20 @@ async function loadHomeData(req: Request): Promise<AppProps> {
 async function loadMovieDetailsData(req: Request): Promise<AppProps> {
 	// TODO: route validation - use react-router????
 	const movieId = req.baseUrl.split("/movies/")[1];
-	const movieDetails = await fetchMovie(movieId);
+	const [movieDetails, watchlist] = await Promise.all([
+		fetchMovie(movieId),
+		fetchWatchlist(accountId),
+	]);
 
 	return {
 		url: req.baseUrl,
-		initialMovies: [],
+		actionMovies: [],
+		watchlist: watchlist ?? {
+			page: 1,
+			results: [],
+			total_pages: 0,
+			total_results: 0,
+		},
 		selectedMovie: movieDetails,
 	};
 }

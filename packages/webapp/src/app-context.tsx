@@ -6,11 +6,12 @@ import {
 	use,
 	useState,
 } from "react";
-import type { ApiMovie, ApiMovieDetails } from "shared";
+import type { ApiListResultTotal, ApiMovie, ApiMovieDetails } from "shared";
 
 export type ContextProps = {
-	initialMovies: ApiMovie[];
+	actionMovies: ApiMovie[];
 	selectedMovie: ApiMovie | ApiMovieDetails | undefined;
+	watchlist: ApiListResultTotal<ApiMovie>;
 };
 
 type ContextWithDipatch = [

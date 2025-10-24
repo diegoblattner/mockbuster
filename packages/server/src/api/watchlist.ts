@@ -1,9 +1,7 @@
 import express from "express";
+import { accountId } from "shared";
 import { addToWatchlist, fetchWatchlist } from "../api-tmdb/watchlist.ts";
 import { ClientSafeError, withErrorHandler } from "./common.ts";
-
-// TODO should come from the logged user
-const accountId = 1234;
 
 const watchlistRouter = express.Router();
 

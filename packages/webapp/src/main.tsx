@@ -16,7 +16,17 @@ if (import.meta.env.VITE_HYDRATE === "TRUE") {
 } else {
 	createRoot(document.getElementById("root")!).render(
 		<StrictMode>
-			<App url={"/"} initialMovies={[]} selectedMovie={undefined} />
+			<App
+				url={"/"}
+				actionMovies={[]}
+				selectedMovie={undefined}
+				watchlist={{
+					page: 1,
+					results: [],
+					total_pages: 0,
+					total_results: 0,
+				}}
+			/>
 		</StrictMode>,
 	);
 }

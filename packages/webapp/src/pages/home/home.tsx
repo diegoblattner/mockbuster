@@ -1,19 +1,12 @@
-import { Suspense, useState } from "react";
-import { type ApiMovie, homeCategories } from "shared";
+import { Suspense } from "react";
+import { homeCategories } from "shared";
 import { Hero } from "ui-lib";
 import { useAppContext } from "../../app-context";
 import { Layout } from "../layout";
 import { CategoryCarousel } from "./category-carousel/category-carousel";
 
-function useWatchList() {
-	const [watchList] = useState<ApiMovie[]>([]);
-
-	return watchList;
-}
-
 export default function Home() {
-	const [{ initialMovies }] = useAppContext();
-	const watchList = useWatchList();
+	const [{ actionMovies, watchlist }] = useAppContext();
 
 	return (
 		<Layout>
@@ -27,21 +20,21 @@ export default function Home() {
 				}
 				subtext="The best movies and the best reviews to guide you on your next binge watch session!"
 			>
-				{watchList.length === 0 && (
+				{watchlist.total_results === 0 && (
 					<p>Start adding movies to your watch list and don't miss a beat.</p>
 				)}
-				{watchList.length > 0 && (
-					<p>
-						<div>Check out the movies you have already saved!</div>
+				{watchlist.total_results > 0 && (
+					<>
+						<p>Check out the movies you have already saved!</p>
 						<button type="button">Go to your watch list</button>
-					</p>
+					</>
 				)}
 			</Hero>
 			<section aria-label="Movies by category">
 				<CategoryCarousel
 					{...homeCategories[0]}
 					style="action"
-					movies={initialMovies}
+					movies={actionMovies}
 					imgLazy={false}
 				/>
 				<Suspense>
