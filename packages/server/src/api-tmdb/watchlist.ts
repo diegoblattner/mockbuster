@@ -2,7 +2,7 @@ import type { ApiListResult, ApiMovie, ApiStatus } from "shared";
 import { fetchTmdbApi } from "./common.ts";
 
 export async function fetchWatchlist(
-	accId: string,
+	accId: string | number,
 	page: number = 1,
 ): Promise<ApiListResult<ApiMovie> | undefined> {
 	const params = new URLSearchParams({
@@ -25,7 +25,10 @@ type WatchlistPayload = {
 	watchlist: boolean;
 };
 
-export async function addToWatchlist(accId: string, media: WatchlistPayload) {
+export async function addToWatchlist(
+	accId: string | number,
+	media: WatchlistPayload,
+) {
 	const { data } = await fetchTmdbApi<ApiListResult<ApiStatus>>(
 		"POST",
 		`/account/${accId}/watchlist`,

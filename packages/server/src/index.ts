@@ -5,6 +5,7 @@ import sirv from "sirv";
 import { createServer as createViteServer } from "vite";
 import { errorHandlerRouter } from "./api/common.ts";
 import { moviesRouter } from "./api/movies.ts";
+import { watchlistRouter } from "./api/watchlist.ts";
 import { registerSSRHandler } from "./handle-ssr.ts";
 
 process.loadEnvFile("../../.env"); // loads .env from the root diretory
@@ -42,7 +43,7 @@ if (isProduction) {
 // static assets
 app.use(base, sirv("dist/client", { extensions: [] }));
 
-app.use("/api", [moviesRouter, errorHandlerRouter]);
+app.use("/api", [moviesRouter, watchlistRouter, errorHandlerRouter]);
 
 registerSSRHandler(app, appRenderer);
 
