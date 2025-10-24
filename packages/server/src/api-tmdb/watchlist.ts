@@ -7,7 +7,7 @@ export async function fetchWatchlist(
 ): Promise<ApiListResultTotal<ApiMovie> | undefined> {
 	const params = new URLSearchParams({
 		page: page.toString(),
-		sort_by: "created_at.asc",
+		sort_by: "created_at.desc",
 	});
 
 	const { data } = await fetchTmdbApi<ApiListResultTotal<ApiMovie>>(

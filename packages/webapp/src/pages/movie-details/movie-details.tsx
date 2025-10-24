@@ -33,6 +33,7 @@ function useMutateWatchlist() {
 						...prev,
 						watchlist: {
 							...prev.watchlist,
+							total_results: newResults.length,
 							results: newResults,
 						},
 					};

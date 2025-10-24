@@ -1,5 +1,5 @@
 import type { Request } from "express";
-import { accountId, homeCategories } from "shared";
+import { AppRoutes, accountId, homeCategories } from "shared";
 import type { AppProps } from "webapp";
 import { fetchMovie, fetchMoviesByGenre } from "./api-tmdb/movies.ts";
 import { fetchWatchlist } from "./api-tmdb/watchlist.ts";
@@ -44,11 +44,29 @@ async function loadMovieDetailsData(req: Request): Promise<AppProps> {
 	};
 }
 
+async function loadWatchlistData(req: Request): Promise<AppProps> {
+	const watchlist = await fetchWatchlist(accountId);
+
+	return {
+		url: req.baseUrl,
+		actionMovies: [],
+		watchlist: watchlist ?? {
+			page: 1,
+			results: [],
+			total_pages: 0,
+			total_results: 0,
+		},
+		selectedMovie: undefined,
+	};
+}
+
 export async function preloadData(req: Request): Promise<AppProps> {
-	if (!req.baseUrl || req.baseUrl === "/") {
+	if (!req.baseUrl || req.baseUrl === AppRoutes.Home) {
 		return loadHomeData(req);
 	} else if (req.baseUrl.startsWith("/movies/")) {
 		return loadMovieDetailsData(req);
+	} else if (req.baseUrl === AppRoutes.Watchlist) {
+		return loadWatchlistData(req);
 	}
 
 	console.log("request unhandled:::: ", req.baseUrl);
