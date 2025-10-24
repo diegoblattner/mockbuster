@@ -25,7 +25,9 @@ const vite = await createViteServer({
 });
 
 // Use vite's connect instance as middleware.
-app.use(vite.middlewares);
+if (!isProduction) {
+	app.use(vite.middlewares);
+}
 
 // Load the server entry.ssrLoadModule automatically transforms
 // ESM source code to be usable in Node.js! There is no bundling

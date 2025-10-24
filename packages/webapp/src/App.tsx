@@ -1,11 +1,22 @@
-import { Home } from "./pages/home/home";
 import "./index.css";
-import type { ApiMovie } from "shared";
+import { BrowserRouter, Route, Routes, StaticRouter } from "react-router";
+import { type AppProps, AppProvider } from "./app-context";
+import { Home, HomeSuspended, homePath } from "./pages/home";
 
-export type AppProps = Readonly<{
-	initialMovies: ApiMovie[];
-}>;
+const RouterComponent = import.meta.env.SSR ? StaticRouter : BrowserRouter;
 
-export default function App({ initialMovies = [] }: AppProps) {
-	return <Home movies={initialMovies} />;
+export default function App(props: AppProps) {
+	const HomeComponent = props.url === homePath ? Home : HomeSuspended;
+
+	return (
+		<AppProvider {...props}>
+			<RouterComponent location={props.url}>
+				<Routes location={props.url}>
+					<Route index path={homePath} Component={HomeComponent} />
+				</Routes>
+			</RouterComponent>
+		</AppProvider>
+	);
 }
+
+export type { AppProps };

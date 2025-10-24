@@ -47,7 +47,10 @@ export function registerSSRHandler(
 		setHeader(res, "Content-Type", "text/html");
 		setHeader(res, "Transfer-Encoding", "chunked");
 		const movies = await fetchMoviesByGenre(28);
-		const appProps: AppProps = { initialMovies: movies?.results ?? [] };
+		const appProps: AppProps = {
+			url: req.path,
+			initialMovies: movies?.results ?? [],
+		};
 
 		// streams the app
 		const { pipe, abort } = renderToPipeableStream(appRenderer(appProps), {

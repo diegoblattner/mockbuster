@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ApiMovie } from "shared";
 import { Carousel, Container, Hero, MovieCard, Page } from "ui-lib";
+import { useAppContext } from "../../app-context";
 
 const HOME_ROUTE = "/";
 
@@ -10,11 +11,8 @@ function useWatchList() {
 	return watchList;
 }
 
-type HomeProps = Readonly<{
-	movies: ApiMovie[];
-}>;
-
-export function Home({ movies = [] }: HomeProps) {
+export default function Home() {
+	const { initialMovies } = useAppContext();
 	const watchList = useWatchList();
 	return (
 		<Page logoHref={HOME_ROUTE} logoAriaLabel={"home page"} links={null}>
@@ -41,8 +39,10 @@ export function Home({ movies = [] }: HomeProps) {
 			<section>
 				<Container>
 					<Carousel title="Romance">
-						{movies.length > 0 ? (
-							movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
+						{initialMovies.length > 0 ? (
+							initialMovies.map((movie) => (
+								<MovieCard key={movie.id} {...movie} />
+							))
 						) : (
 							<p>No movies found...</p>
 						)}
