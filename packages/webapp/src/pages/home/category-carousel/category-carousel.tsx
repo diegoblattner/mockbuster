@@ -1,9 +1,6 @@
-import { useCallback } from "react";
-import { Link } from "react-router";
 import type { ApiMovie } from "shared";
-import { Carousel, Container, MovieCard } from "ui-lib";
-import { useAppContext } from "../../../app-context";
-import { goToMovieDetails } from "../../movie-details";
+import { Carousel, Container } from "ui-lib";
+import { MovieCardLink } from "../../../components/movie-card-link";
 
 type CategoryCarouselProps = Readonly<{
 	name: string;
@@ -18,29 +15,16 @@ export function CategoryCarousel({
 	movies = [],
 	imgLazy,
 }: CategoryCarouselProps) {
-	const [, setValues] = useAppContext();
-	const onMovieSelected = useCallback(
-		(movie: ApiMovie) => {
-			setValues((prev) => ({
-				...prev,
-				selectedMovie: movie,
-			}));
-		},
-		[setValues],
-	);
-
 	return (
 		<Container>
 			<Carousel title={name}>
 				{movies.length > 0 ? (
 					movies.map((movie, i) => (
-						<Link
+						<MovieCardLink
 							key={movie.id}
-							to={goToMovieDetails(movie.id)}
-							onClick={() => onMovieSelected(movie)}
-						>
-							<MovieCard {...movie} imgLazy={imgLazy || i > 5} />
-						</Link>
+							movie={movie}
+							imgLazy={imgLazy || i > 5}
+						/>
 					))
 				) : (
 					<p>No movies found in {name}...</p>

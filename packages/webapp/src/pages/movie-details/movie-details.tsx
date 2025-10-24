@@ -3,6 +3,7 @@ import type { ApiMovie } from "shared";
 import { Container, MovieCard } from "ui-lib";
 import { postWatchlist } from "../../api/watchlist";
 import { useAppContext } from "../../app-context";
+import { HomeLink } from "../../components/home-link";
 import { Layout } from "../layout";
 
 function useMutateWatchlist() {
@@ -78,6 +79,7 @@ export default function MovieDetails() {
 	return (
 		<Layout title={selectedMovie.title}>
 			<Container>
+				<HomeLink />
 				<div>
 					<MovieCard genre_ids={[]} {...selectedMovie} />
 					<div>

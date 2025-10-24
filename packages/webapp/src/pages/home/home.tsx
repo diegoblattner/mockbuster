@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { homeCategories } from "shared";
+import { Link } from "react-router";
+import { AppRoutes, homeCategories } from "shared";
 import { Hero } from "ui-lib";
 import { useAppContext } from "../../app-context";
 import { Layout } from "../layout";
@@ -26,7 +27,7 @@ export default function Home() {
 				{watchlist.total_results > 0 && (
 					<>
 						<p>Check out the movies you have already saved!</p>
-						<button type="button">Go to your watch list</button>
+						<Link to={AppRoutes.Watchlist}>Go to your watch list</Link>
 					</>
 				)}
 			</Hero>

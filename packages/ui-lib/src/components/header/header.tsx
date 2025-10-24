@@ -5,23 +5,23 @@ import "./styles.css";
 type HeaderProps = Readonly<{
 	logo: ReactNode;
 	logoAriaLabel: string;
-	logoHref: string;
+	logoHref?: string;
 	title: string;
 	links: ReactNode;
 }>;
 
-export function Header({ logo, logoAriaLabel, logoHref, title }: HeaderProps) {
+export function Header({ logo, logoAriaLabel, title }: HeaderProps) {
 	return (
 		<header className="header">
 			<Container>
 				<div className="header__brand">
-					<a
-						href={logoHref}
-						aria-label={logoAriaLabel}
+					<span
+						// href={logoHref}
+						title={logoAriaLabel}
 						className="header__brand__logo"
 					>
 						{logo}
-					</a>
+					</span>
 					<h1 className="header__brand__title">{title}</h1>
 				</div>
 				<div className="header__links"></div>

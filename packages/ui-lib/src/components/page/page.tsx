@@ -8,7 +8,7 @@ type PageProps = Readonly<{
 	title?: string;
 	children: ReactNode;
 	links: ReactNode;
-	logoHref: string;
+	logoHref?: string;
 	logoAriaLabel: string;
 }>;
 

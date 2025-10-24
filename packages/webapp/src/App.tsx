@@ -10,6 +10,7 @@ import { AppRoutes } from "shared";
 import { AppProvider, type ContextProps } from "./app-context";
 import { Home } from "./pages/home";
 import { MovieDetails } from "./pages/movie-details";
+import { Watchlist } from "./pages/watchlist";
 
 export type AppProps = ContextProps &
 	Readonly<{
@@ -35,6 +36,11 @@ export default function App({
 						path={AppRoutes.MovieDetails}
 						Component={MovieDetails}
 						loader={loadMovieDetailsData}
+					/>
+					<Route
+						path={AppRoutes.Watchlist}
+						Component={Watchlist}
+						// loader={loadMovieDetailsData}
 					/>
 				</Routes>
 			</RouterComponent>
