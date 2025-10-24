@@ -35,6 +35,11 @@ if (!isProduction) {
 // required, and provides efficient invalidation similar to HMR.
 const { appRenderer } = await vite.ssrLoadModule("src/app-renderer.tsx");
 
+// blocks request from chrome's devtools (automatic workspace folders feature)
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (_, res) => {
+	return res.status(204).end();
+});
+
 // set up compression
 if (isProduction) {
 	app.use(compression());
