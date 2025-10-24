@@ -42,17 +42,20 @@ export default function Home() {
 					{...homeCategories[0]}
 					style="action"
 					movies={initialMovies}
+					imgLazy={false}
 				/>
 				<Suspense>
 					<CategoryCarousel
 						{...homeCategories[1]}
 						style="fantasy"
 						movies={[]}
+						imgLazy={true}
 					/>
 					<CategoryCarousel
 						{...homeCategories[2]}
 						style="science"
 						movies={[]}
+						imgLazy={true}
 					/>
 				</Suspense>
 			</section>

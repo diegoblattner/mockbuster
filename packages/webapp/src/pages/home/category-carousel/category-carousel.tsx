@@ -10,9 +10,14 @@ type CategoryCarouselProps = Readonly<{
 	id: number;
 	style: string;
 	movies: ApiMovie[];
+	imgLazy: boolean;
 }>;
 
-export function CategoryCarousel({ name, movies = [] }: CategoryCarouselProps) {
+export function CategoryCarousel({
+	name,
+	movies = [],
+	imgLazy,
+}: CategoryCarouselProps) {
 	const [, setValues] = useAppContext();
 	const onMovieSelected = useCallback(
 		(movie: ApiMovie) => {
@@ -28,13 +33,13 @@ export function CategoryCarousel({ name, movies = [] }: CategoryCarouselProps) {
 		<Container>
 			<Carousel title={name}>
 				{movies.length > 0 ? (
-					movies.map((movie) => (
+					movies.map((movie, i) => (
 						<Link
 							key={movie.id}
 							to={goToMovieDetails(movie.id)}
 							onClick={() => onMovieSelected(movie)}
 						>
-							<MovieCard {...movie} />
+							<MovieCard {...movie} imgLazy={imgLazy || i > 5} />
 						</Link>
 					))
 				) : (
