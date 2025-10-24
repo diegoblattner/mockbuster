@@ -17,7 +17,7 @@ export function MovieCard({
 		<div className="movie-card">
 			<div className="movie-card__img">
 				<img
-					src={`http://image.tmdb.org/t/p/w200/${poster_path}`}
+					src={`https://image.tmdb.org/t/p/w200/${poster_path}`}
 					alt={title}
 				/>
 			</div>
