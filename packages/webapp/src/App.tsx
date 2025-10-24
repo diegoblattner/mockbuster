@@ -1,22 +1,43 @@
 import "./index.css";
-import { BrowserRouter, Route, Routes, StaticRouter } from "react-router";
-import { type AppProps, AppProvider } from "./app-context";
-import { Home, HomeSuspended, homePath } from "./pages/home";
+import {
+	BrowserRouter,
+	type LoaderFunction,
+	Route,
+	Routes,
+	StaticRouter,
+} from "react-router";
+import { AppRoutes } from "shared";
+import { AppProvider, type ContextProps } from "./app-context";
+import { Home } from "./pages/home";
+import { MovieDetails } from "./pages/movie-details";
+
+export type AppProps = ContextProps &
+	Readonly<{
+		url: string;
+		loadHomeData?: LoaderFunction;
+		loadMovieDetailsData?: LoaderFunction;
+	}>;
 
 const RouterComponent = import.meta.env.SSR ? StaticRouter : BrowserRouter;
 
-export default function App(props: AppProps) {
-	const HomeComponent = props.url === homePath ? Home : HomeSuspended;
-
+export default function App({
+	url,
+	loadHomeData,
+	loadMovieDetailsData,
+	...ctx
+}: AppProps) {
 	return (
-		<AppProvider {...props}>
-			<RouterComponent location={props.url}>
-				<Routes location={props.url}>
-					<Route index path={homePath} Component={HomeComponent} />
+		<AppProvider {...ctx}>
+			<RouterComponent location={url!}>
+				<Routes>
+					<Route index Component={Home} loader={loadHomeData} />
+					<Route
+						path={AppRoutes.MovieDetails}
+						Component={MovieDetails}
+						loader={loadMovieDetailsData}
+					/>
 				</Routes>
 			</RouterComponent>
 		</AppProvider>
 	);
 }
-
-export type { AppProps };

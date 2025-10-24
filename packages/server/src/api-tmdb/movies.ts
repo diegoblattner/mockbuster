@@ -1,4 +1,9 @@
-import { type ApiListResult, type ApiMovie, language } from "shared";
+import {
+	type ApiListResult,
+	type ApiMovie,
+	type ApiMovieDetails,
+	language,
+} from "shared";
 import { fetchTmdbApi } from "./common.ts";
 
 export async function fetchMoviesByGenre(genreId: number, page: number = 1) {
@@ -13,6 +18,15 @@ export async function fetchMoviesByGenre(genreId: number, page: number = 1) {
 		"GET",
 		"/discover/movie",
 		params,
+	);
+
+	return data;
+}
+
+export async function fetchMovie(movieId: number | string) {
+	const { data } = await fetchTmdbApi<ApiMovieDetails>(
+		"GET",
+		`/movie/${movieId}`,
 	);
 
 	return data;

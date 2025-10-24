@@ -16,7 +16,7 @@ if (import.meta.env.VITE_HYDRATE === "TRUE") {
 } else {
 	createRoot(document.getElementById("root")!).render(
 		<StrictMode>
-			<App url={window.location.pathname} initialMovies={[]} />
+			<App url={"/"} initialMovies={[]} selectedMovie={undefined} />
 		</StrictMode>,
 	);
 }

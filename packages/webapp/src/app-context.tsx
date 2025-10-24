@@ -1,20 +1,33 @@
-import { createContext, type ReactNode, useContext, useState } from "react";
-import type { ApiMovie } from "shared";
+import {
+	createContext,
+	type Dispatch,
+	type ReactNode,
+	type SetStateAction,
+	useContext,
+	useState,
+} from "react";
+import type { ApiMovie, ApiMovieDetails } from "shared";
 
-export type AppProps = Readonly<{
-	url: string;
+export type ContextProps = {
 	initialMovies: ApiMovie[];
-}>;
+	selectedMovie: ApiMovie | ApiMovieDetails | undefined;
+};
 
-const AppContext = createContext<AppProps | undefined>(undefined);
+type ContextWithDipatch = [
+	ContextProps,
+	Dispatch<SetStateAction<ContextProps>>,
+];
+
+const AppContext = createContext<ContextWithDipatch | undefined>(undefined);
 
 export function AppProvider({
 	children,
 	...props
-}: AppProps & { children: ReactNode }) {
-	const [state] = useState(props);
-
-	return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
+}: ContextProps & { children: ReactNode }) {
+	const stateAndSetter = useState(props);
+	return (
+		<AppContext.Provider value={stateAndSetter}>{children}</AppContext.Provider>
+	);
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

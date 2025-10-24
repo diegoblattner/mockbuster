@@ -1,3 +1,6 @@
+export type { ApiMovieDetails } from "./movie-details";
+export { AppRoutes } from "./routes.ts";
+
 export const serverPropsTagId = "server-props-for-hydration";
 export const language = "en";
 

@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 import { renderToPipeableStream } from "react-dom/server";
 import { serverPropsTagId } from "shared";
 import type { AppProps } from "webapp";
-import { fetchMoviesByGenre } from "./api-tmdb/movies.ts";
 import { htmlTemplateEnd, htmlTemplateStart } from "./html-template.ts";
+import { preloadData } from "./preload-data.ts";
 
 const TIMEOUT = 20000;
 function setHeader(res: Response, name: string, value: number | string) {
@@ -46,11 +46,8 @@ export function registerSSRHandler(
 		res.statusCode = getStatusCode();
 		setHeader(res, "Content-Type", "text/html");
 		setHeader(res, "Transfer-Encoding", "chunked");
-		const movies = await fetchMoviesByGenre(28);
-		const appProps: AppProps = {
-			url: req.path,
-			initialMovies: movies?.results ?? [],
-		};
+
+		const appProps: AppProps = await preloadData(req);
 
 		// streams the app
 		const { pipe, abort } = renderToPipeableStream(appRenderer(appProps), {

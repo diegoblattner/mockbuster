@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { Link } from "react-router";
 import type { ApiMovie } from "shared";
-import { Carousel, Container, Hero, MovieCard, Page } from "ui-lib";
+import { Carousel, Container, Hero, MovieCard } from "ui-lib";
 import { useAppContext } from "../../app-context";
-
-const HOME_ROUTE = "/";
+import { Layout } from "../layout";
+import { goToMovieDetails } from "../movie-details";
 
 function useWatchList() {
 	const [watchList] = useState<ApiMovie[]>([]);
@@ -12,10 +13,21 @@ function useWatchList() {
 }
 
 export default function Home() {
-	const { initialMovies } = useAppContext();
+	const [{ initialMovies }, setValues] = useAppContext();
 	const watchList = useWatchList();
+
+	const onMovieSelected = useCallback(
+		(movie: ApiMovie) => {
+			setValues((prev) => ({
+				...prev,
+				selectedMovie: movie,
+			}));
+		},
+		[setValues],
+	);
+
 	return (
-		<Page logoHref={HOME_ROUTE} logoAriaLabel={"home page"} links={null}>
+		<Layout>
 			<Hero
 				mainText={
 					<>
@@ -41,7 +53,13 @@ export default function Home() {
 					<Carousel title="Romance">
 						{initialMovies.length > 0 ? (
 							initialMovies.map((movie) => (
-								<MovieCard key={movie.id} {...movie} />
+								<Link
+									key={movie.id}
+									to={goToMovieDetails(movie.id)}
+									onClick={() => onMovieSelected(movie)}
+								>
+									<MovieCard {...movie} />
+								</Link>
 							))
 						) : (
 							<p>No movies found...</p>
@@ -49,6 +67,6 @@ export default function Home() {
 					</Carousel>
 				</Container>
 			</section>
-		</Page>
+		</Layout>
 	);
 }

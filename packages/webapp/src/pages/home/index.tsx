@@ -1,13 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 
-export const homePath = "/";
-
+// react lazy for code splitting
 export const Home = lazy(() => import("./home"));
-
-export function HomeSuspended() {
-	return (
-		<Suspense fallback="Loading...">
-			<Home />
-		</Suspense>
-	);
-}
