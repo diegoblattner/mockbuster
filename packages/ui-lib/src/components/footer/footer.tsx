@@ -15,6 +15,7 @@ export function Footer() {
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
 					viewBox="0 0 190.24 81.52"
+					width="200px"
 				>
 					<defs>
 						<linearGradient
