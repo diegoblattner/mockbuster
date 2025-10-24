@@ -13,7 +13,7 @@
 
 .header__brand__logo {
   margin-block: calc(var(--spacing-1) * -1);
-  translate: 0 -3px;
+  translate: 0 -2px;
 }
 
 .header__brand__title {
