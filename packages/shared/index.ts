@@ -1,3 +1,5 @@
+import type { Genre } from "./movie-details";
+
 export type { ApiMovieDetails } from "./movie-details";
 export { AppRoutes } from "./routes.ts";
 
@@ -30,6 +32,21 @@ const allGenres = {
 	10752: "Kriegsfilm",
 	37: "Western",
 } as const;
+
+export const homeCategories: Genre[] = [
+	{
+		id: 28,
+		name: allGenres[28],
+	},
+	{
+		id: 14,
+		name: allGenres[14],
+	},
+	{
+		id: 878,
+		name: allGenres[878],
+	},
+];
 
 export type ApiListResult<T> = {
 	page: number;
