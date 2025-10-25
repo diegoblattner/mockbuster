@@ -1,15 +1,22 @@
 import type { ReactNode } from "react";
 import { AppRoutes } from "shared";
 import { Page } from "ui-lib";
+import { HomeLink } from "../components/home-link";
 
 type LayoutProps = Readonly<{
 	title?: string;
 	children: ReactNode;
+	showHomeLink?: boolean;
 }>;
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, showHomeLink }: LayoutProps) {
 	return (
-		<Page logoHref={AppRoutes.Home} logoAriaLabel={"home page"} links={null}>
+		<Page
+			logoHref={AppRoutes.Home}
+			logoAriaLabel={"home page"}
+			links={null}
+			backBtn={showHomeLink ? <HomeLink /> : undefined}
+		>
 			{children}
 		</Page>
 	);

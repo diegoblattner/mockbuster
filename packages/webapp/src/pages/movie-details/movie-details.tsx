@@ -4,7 +4,6 @@ import { Container, Cta, MovieOverview } from "ui-lib";
 import { AddListIcon } from "ui-lib/src/components/icons/icons";
 import { postWatchlist } from "../../api/watchlist";
 import { useAppContext } from "../../app-context";
-import { HomeLink } from "../../components/home-link";
 import { Layout } from "../layout";
 
 function useMutateWatchlist() {
@@ -79,9 +78,8 @@ export default function MovieDetails() {
 	);
 
 	return (
-		<Layout title={selectedMovie.title}>
+		<Layout title={selectedMovie.title} showHomeLink>
 			<Container>
-				<HomeLink />
 				<MovieOverview {...selectedMovie}>
 					{watchlist.total_results >= 20 ? (
 						<p>There are alreay too many items in your watchlist.</p>

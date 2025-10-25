@@ -1,6 +1,5 @@
 import { Container, Grid } from "ui-lib";
 import { useAppContext } from "../../app-context";
-import { HomeLink } from "../../components/home-link";
 import { MovieCardLink } from "../../components/movie-card-link";
 import { Layout } from "../layout";
 
@@ -8,9 +7,8 @@ export default function Watchlist() {
 	const [{ watchlist }] = useAppContext();
 
 	return (
-		<Layout title="Watchlist">
+		<Layout title="Watchlist" showHomeLink>
 			<Container>
-				<HomeLink />
 				<Grid
 					title={`Movies in your watchlist (${watchlist.total_results})`}
 					emptyText="There are movies are no movies saved..."
