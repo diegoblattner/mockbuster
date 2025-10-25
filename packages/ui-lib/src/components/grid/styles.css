@@ -10,6 +10,7 @@
   display: grid;
   grid-gap: var(--spacing-6);
   grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: space-around;
 }
 
 .grid__empty {
