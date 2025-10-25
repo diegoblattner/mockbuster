@@ -1,8 +1,10 @@
 import assert from "node:assert";
 import compression from "compression";
 import express from "express";
+import type { ReactNode } from "react";
 import sirv from "sirv";
 import { createServer as createViteServer } from "vite";
+import type { AppProps } from "webapp";
 import { errorHandlerRouter } from "./api/common.ts";
 import { moviesRouter } from "./api/movies.ts";
 import { watchlistRouter } from "./api/watchlist.ts";
@@ -20,20 +22,27 @@ const isProduction = process.env.NODE_ENV === "production";
 const port = Number(process.env.PORT ?? 5174);
 const base = process.env.BASE_URL ?? "/";
 
-const vite = await createViteServer({
-	server: { middlewareMode: true },
-	appType: "custom",
-});
+let appRenderer: (props: AppProps) => ReactNode;
+if (isProduction) {
+	// load the client/ssr folder directly
+	appRenderer = (await import("../dist/ssr/assets/AppSSR.js")).default as (
+		props: AppProps,
+	) => ReactNode;
+} else {
+	const vite = await createViteServer({
+		server: { middlewareMode: true },
+		appType: "custom",
+	});
 
-// Use vite's connect instance as middleware.
-if (!isProduction) {
+	// Use vite's connect instance as middleware.
 	app.use(vite.middlewares);
-}
 
-// Load the server entry.ssrLoadModule automatically transforms
-// ESM source code to be usable in Node.js! There is no bundling
-// required, and provides efficient invalidation similar to HMR.
-const { appRenderer } = await vite.ssrLoadModule("src/app-renderer.tsx");
+	// Load the server entry.ssrLoadModule automatically transforms
+	// ESM source code to be usable in Node.js! There is no bundling
+	// required, and provides efficient invalidation similar to HMR.
+	const loadedModule = await vite.ssrLoadModule("src/app-renderer.tsx");
+	appRenderer = loadedModule.appRenderer;
+}
 
 // blocks request from chrome's devtools (automatic workspace folders feature)
 if (!isProduction) {

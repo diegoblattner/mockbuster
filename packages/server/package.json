@@ -6,9 +6,9 @@
   "author": "diblattner@gmail.com",
   "main": "index.ts",
   "scripts": {
-    "dev": "npm run build:for-server -w ../../packages/webapp && node --watch --watch-path=./src src/index.ts",
-    "build": "npm run build:client && vite build --outDir dist/server --ssr src/index.ts",
-    "preview": "cross-env NODE_ENV=production node server"
+    "dev": "npm run build:for-server:dev -w ../../packages/webapp && node --watch --watch-path=./src src/index.ts",
+    "build": "npm run build:for-server:build -w ../../packages/webapp && vite build --outDir dist/server --ssr src/index.ts",
+    "preview": "cross-env NODE_ENV=production node dist/server"
   },
   "dependencies": {
     "compression": "^1.8.1",
