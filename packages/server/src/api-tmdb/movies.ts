@@ -31,3 +31,12 @@ export async function fetchMovie(movieId: number | string) {
 
 	return data;
 }
+
+export async function fetchRecommendations(movieId: number | string) {
+	const { data } = await fetchTmdbApi<ApiListResult<ApiMovie>>(
+		"GET",
+		`/movie/${movieId}/recommendations`,
+	);
+
+	return data;
+}
