@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import "./styles.css";
+import type { GenreStyle } from "shared";
 
 type ContainerProps = Readonly<{
 	children?: ReactNode;
 	className?: string;
-	style?: "action" | "fantasy" | "science";
+	style?: GenreStyle;
 }>;
 
 export function Container({ className = "", style, children }: ContainerProps) {

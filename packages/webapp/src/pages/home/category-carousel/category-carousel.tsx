@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import { type ComponentProps, Fragment, Suspense } from "react";
 import type { ApiMovie } from "shared";
 import { Carousel, Container } from "ui-lib";
 import { MovieCardLink } from "../../../components/movie-card-link";
@@ -17,17 +17,20 @@ export function CategoryCarousel({
 	style,
 	imgLazy,
 }: CategoryCarouselProps) {
+	const Wrapper = imgLazy ? Suspense : Fragment; // suspense categories not visible
 	return (
-		<Container style={style}>
-			<Carousel title={name} emptyText={`No movies found in ${name}...`}>
-				{movies.map((movie, i) => (
-					<MovieCardLink
-						key={movie.id}
-						movie={movie}
-						imgLazy={imgLazy || i > 5}
-					/>
-				))}
-			</Carousel>
-		</Container>
+		<Wrapper>
+			<Container style={style}>
+				<Carousel title={name} emptyText={`No movies found in ${name}...`}>
+					{movies.map((movie, i) => (
+						<MovieCardLink
+							key={movie.id}
+							movie={movie}
+							imgLazy={imgLazy || i > 5}
+						/>
+					))}
+				</Carousel>
+			</Container>
+		</Wrapper>
 	);
 }

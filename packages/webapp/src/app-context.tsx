@@ -1,4 +1,5 @@
 import {
+	type ComponentProps,
 	createContext,
 	type Dispatch,
 	type ReactNode,
@@ -6,10 +7,21 @@ import {
 	use,
 	useState,
 } from "react";
-import type { ApiListResultTotal, ApiMovie, ApiMovieDetails } from "shared";
+import type {
+	ApiListResult,
+	ApiListResultTotal,
+	ApiMovie,
+	ApiMovieDetails,
+} from "shared";
+import type { Container } from "ui-lib";
 
 export type ContextProps = {
-	actionMovies: ApiMovie[];
+	categories: {
+		id: number;
+		name: string;
+		style: ComponentProps<typeof Container>["style"];
+		data: ApiListResult<ApiMovie>;
+	}[];
 	selectedMovie: ApiMovie | ApiMovieDetails | undefined;
 	watchlist: ApiListResultTotal<ApiMovie>;
 };

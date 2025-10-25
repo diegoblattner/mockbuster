@@ -35,18 +35,26 @@ const allGenres = {
 	37: "Western",
 } as const;
 
-export const homeCategories: Genre[] = [
+export type GenreStyle = "action" | "fantasy" | "science";
+type GenreWithStyle = Genre & {
+	style: GenreStyle;
+};
+
+export const homePageCategories: GenreWithStyle[] = [
 	{
 		id: 28,
 		name: allGenres[28],
+		style: "action",
 	},
 	{
 		id: 14,
 		name: allGenres[14],
+		style: "fantasy",
 	},
 	{
 		id: 878,
 		name: allGenres[878],
+		style: "science",
 	},
 ];
 

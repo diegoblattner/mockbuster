@@ -1,13 +1,12 @@
-import { Suspense } from "react";
 import { Link } from "react-router";
-import { AppRoutes, homeCategories } from "shared";
+import { AppRoutes } from "shared";
 import { Hero } from "ui-lib";
 import { useAppContext } from "../../app-context";
 import { Layout } from "../layout";
 import { CategoryCarousel } from "./category-carousel/category-carousel";
 
 export default function Home() {
-	const [{ actionMovies, watchlist }] = useAppContext();
+	const [{ categories, watchlist }] = useAppContext();
 
 	return (
 		<Layout>
@@ -31,28 +30,18 @@ export default function Home() {
 					</>
 				)}
 			</Hero>
-			<section aria-label="Movies by category">
-				<CategoryCarousel
-					{...homeCategories[0]}
-					style="action"
-					movies={actionMovies}
-					imgLazy={false}
-				/>
-				<Suspense>
-					<CategoryCarousel
-						{...homeCategories[1]}
-						style="fantasy"
-						movies={[]}
-						imgLazy={true}
-					/>
-					<CategoryCarousel
-						{...homeCategories[2]}
-						style="science"
-						movies={[]}
-						imgLazy={true}
-					/>
-				</Suspense>
-			</section>
+			{categories.length > 0 && (
+				<section aria-label="Movies by category">
+					{categories.map((c, i) => (
+						<CategoryCarousel
+							key={c.id}
+							{...c}
+							movies={c.data.results}
+							imgLazy={i > 0}
+						/>
+					))}
+				</section>
+			)}
 		</Layout>
 	);
 }

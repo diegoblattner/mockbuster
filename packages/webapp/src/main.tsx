@@ -18,7 +18,7 @@ if (import.meta.env.VITE_HYDRATE === "TRUE") {
 		<StrictMode>
 			<App
 				url={"/"}
-				actionMovies={[]}
+				categories={[]}
 				selectedMovie={undefined}
 				watchlist={{
 					page: 1,

@@ -1,18 +1,25 @@
 import type { Request } from "express";
-import { AppRoutes, accountId, homeCategories } from "shared";
+import { AppRoutes, accountId, homePageCategories } from "shared";
 import type { AppProps } from "webapp";
 import { fetchMovie, fetchMoviesByGenre } from "./api-tmdb/movies.ts";
 import { fetchWatchlist } from "./api-tmdb/watchlist.ts";
 
 async function loadHomeData(_req: Request): Promise<AppProps> {
-	const [movies, watchlist] = await Promise.all([
-		fetchMoviesByGenre(homeCategories[0].id),
+	const allCategories = homePageCategories.map((c) => fetchMoviesByGenre(c.id));
+	const [watchlist, ...movies] = await Promise.all([
 		fetchWatchlist(accountId),
+		...allCategories,
 	]);
 
 	return {
 		url: "/",
-		actionMovies: movies?.results ?? [],
+		categories: homePageCategories.map((c, i) => ({
+			...c,
+			data: movies[i] ?? {
+				page: 1,
+				results: [],
+			},
+		})),
 		watchlist: watchlist ?? {
 			page: 1,
 			results: [],
@@ -33,7 +40,7 @@ async function loadMovieDetailsData(req: Request): Promise<AppProps> {
 
 	return {
 		url: req.baseUrl,
-		actionMovies: [],
+		categories: [],
 		watchlist: watchlist ?? {
 			page: 1,
 			results: [],
@@ -49,7 +56,7 @@ async function loadWatchlistData(req: Request): Promise<AppProps> {
 
 	return {
 		url: req.baseUrl,
-		actionMovies: [],
+		categories: [],
 		watchlist: watchlist ?? {
 			page: 1,
 			results: [],
