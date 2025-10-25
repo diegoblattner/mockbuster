@@ -34,7 +34,7 @@ export function Page({
 			<title>{fullTitle}</title> {/* changes the document title */}
 			<Header logo={<Logo />} title={fixedTitle} {...headerProps} />
 			{backBtn && <div className="page__back container">{backBtn}</div>}
-			<main>{children}</main>
+			<main className="page_main">{children}</main>
 			<Footer />
 		</div>
 	);

@@ -44,6 +44,15 @@
   .movie-overview__desc__title {
     font-size: var(--font-xxl);
   }
+  .movie-overview__desc__title--action {
+    font-family: var(--font-action);
+  }
+  .movie-overview__desc__title--fantasy {
+    font-family: var(--font-fantasy);
+  }
+  .movie-overview__desc__title--science {
+    font-family: var(--font-science);
+  }
 
   .movie-overview__desc__actions {
     align-self: start;

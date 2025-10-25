@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
-import { type ApiMovie, type ApiMovieDetails, getGenreLabels } from "shared";
+import {
+	type ApiMovie,
+	type ApiMovieDetails,
+	getGenreLabels,
+	getGenreStyle,
+} from "shared";
 import "./styles.css";
 
 type Undefined<T> = {
@@ -22,6 +27,8 @@ export function MovieOverview({
 	genres,
 	genre_ids,
 }: MovieOverviewProps) {
+	const style = getGenreStyle(genres, genre_ids);
+	const clx = style ? `movie-overview__desc__title--${style}` : "";
 	return (
 		<div className="movie-overview">
 			<img
@@ -30,7 +37,7 @@ export function MovieOverview({
 				alt={`${title} cover`}
 			/>
 			<div className="movie-overview__desc">
-				<h2 className="movie-overview__desc__title">{title}</h2>
+				<h2 className={`movie-overview__desc__title ${clx}`}>{title}</h2>
 				<div className="movie-overview__desc__date" suppressHydrationWarning>
 					{new Date(release_date).toLocaleDateString()}
 				</div>

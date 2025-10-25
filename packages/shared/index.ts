@@ -58,6 +58,12 @@ export const homePageCategories: GenreWithStyle[] = [
 	},
 ];
 
+const genreStyle: Record<number, GenreStyle> = {
+	28: "action",
+	14: "fantasy",
+	878: "science",
+};
+
 export function getGenreLabels(
 	genres: Genre[] | undefined,
 	genre_ids: number[] | undefined,
@@ -69,6 +75,26 @@ export function getGenreLabels(
 		labels = genre_ids.map((id) => allGenres[id as ApiGenreId]);
 	}
 	return labels.filter((g) => !!g);
+}
+
+export function getGenreStyle(
+	genres: Genre[] | undefined,
+	genre_ids: number[] | undefined,
+): GenreStyle | undefined {
+	if (genres) {
+		for (const g of genres) {
+			if (genreStyle[g.id]) {
+				return genreStyle[g.id];
+			}
+		}
+	} else if (genre_ids) {
+		for (const id of genre_ids) {
+			if (genreStyle[id]) {
+				return genreStyle[id];
+			}
+		}
+	}
+	return undefined;
 }
 
 export type ApiListResult<T> = {
