@@ -47,7 +47,18 @@ export function registerSSRHandler(
 		setHeader(res, "Content-Type", "text/html");
 		setHeader(res, "Transfer-Encoding", "chunked");
 
-		const appProps: AppProps = await preloadData(req);
+		let appProps: AppProps | undefined;
+		try {
+			appProps = await preloadData(req);
+		} catch (e) {
+			didError = true;
+			console.error("error fetch the app data: ", e);
+		}
+		if (!appProps) {
+			res.write(`<div>Invalid request</div>${htmlTemplateEnd}`);
+			res.send();
+			return;
+		}
 
 		// streams the app
 		const { pipe, abort } = renderToPipeableStream(appRenderer(appProps), {
