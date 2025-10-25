@@ -50,7 +50,8 @@ export function Carousel({
 				)}
 			</h3>
 
-			<div ref={containerRef} className="carousel__container">
+			{/** biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable elements need tabindex for a11y */}
+			<div ref={containerRef} className="carousel__container" tabIndex={0}>
 				{children}
 			</div>
 			{isEmpty && <div className="carousel__container__empty">{emptyText}</div>}

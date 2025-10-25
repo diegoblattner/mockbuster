@@ -7,6 +7,7 @@ import "@fontsource-variable/orbitron";
 
 export { Carousel } from "./components/carousel";
 export { Container } from "./components/container";
+export { Cta } from "./components/cta";
 export { Footer } from "./components/footer";
 export { Header } from "./components/header";
 export { Hero } from "./components/hero";

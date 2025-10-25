@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { AppRoutes } from "shared";
-import { Hero } from "ui-lib";
+import { Cta, Hero } from "ui-lib";
 import { useAppContext } from "../../app-context";
 import { Layout } from "../layout";
 import { CategoryCarousel } from "./category-carousel/category-carousel";
@@ -26,7 +26,9 @@ export default function Home() {
 				{watchlist.total_results > 0 && (
 					<>
 						<p>Check out the movies you have already saved!</p>
-						<Link to={AppRoutes.Watchlist}>Go to your watch list</Link>
+						<Cta as={Link} to={AppRoutes.Watchlist}>
+							Go to your watch list
+						</Cta>
 					</>
 				)}
 			</Hero>

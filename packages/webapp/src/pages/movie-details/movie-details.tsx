@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import type { ApiMovie } from "shared";
-import { Container, MovieCard } from "ui-lib";
+import { Container, Cta, MovieCard } from "ui-lib";
+import { AddListIcon } from "ui-lib/src/components/icons/icons";
 import { postWatchlist } from "../../api/watchlist";
 import { useAppContext } from "../../app-context";
 import { HomeLink } from "../../components/home-link";
@@ -89,15 +90,20 @@ export default function MovieDetails() {
 						{watchlist.total_results >= 20 ? (
 							<p>There are alreay too many items in your watchlist.</p>
 						) : (
-							<button
+							<Cta
 								type="button"
 								onClick={() => toggleWatchlist(selectedMovie as ApiMovie)}
 								disabled={mutating}
+								variant={movieInWatchlist ? "outline" : undefined}
 							>
-								{movieInWatchlist
-									? "Remove from watchlist"
-									: "Add to watchlist"}
-							</button>
+								{movieInWatchlist ? (
+									"Remove from watchlist"
+								) : (
+									<>
+										Add to watchlist <AddListIcon />
+									</>
+								)}
+							</Cta>
 						)}
 					</div>
 				</div>
