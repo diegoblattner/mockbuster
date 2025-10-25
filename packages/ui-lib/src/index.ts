@@ -14,4 +14,5 @@ export { Hero } from "./components/hero";
 export { FilmIcon } from "./components/icons";
 export { Logo } from "./components/logo";
 export { MovieCard } from "./components/movie-card";
+export { MovieOverview } from "./components/movie-overview";
 export { Page } from "./components/page";

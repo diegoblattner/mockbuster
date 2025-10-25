@@ -58,6 +58,19 @@ export const homePageCategories: GenreWithStyle[] = [
 	},
 ];
 
+export function getGenreLabels(
+	genres: Genre[] | undefined,
+	genre_ids: number[] | undefined,
+) {
+	let labels: string[] = [];
+	if (genres) {
+		labels = genres.map((g) => g.name);
+	} else if (genre_ids) {
+		labels = genre_ids.map((id) => allGenres[id as ApiGenreId]);
+	}
+	return labels.filter((g) => !!g);
+}
+
 export type ApiListResult<T> = {
 	page: number;
 	results: T[];

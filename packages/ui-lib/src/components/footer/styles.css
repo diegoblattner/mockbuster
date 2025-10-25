@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background: var(--black);
+  margin-top: var(--spacing-12);
 }
 
 .footer__powered-by {
