@@ -7,10 +7,10 @@
   --screen-md: 720px;
   --screen-lg: 1080px;
 
-  --screen-max-w: 100ch;
+  --screen-max-w: 1000px;
 
-  --white: oklch(98.8% 0.00011 271.152);
-  --black: oklch(15.9% 0.00002 271.152);
+  --white: oklab(98.8% 0 -0.00011);
+  --black: oklab(15.9% 0 -0.00002);
   --gray-10: oklab(90% 0 0);
   --gray-20: oklab(80% 0 0);
   --gray-30: oklab(70% 0 -0.1);
@@ -31,7 +31,11 @@
   --primary-80: oklab(30% 0.2 0.1);
   --primary-90: oklab(20% 0.1 0);
   
-  --color-secondary: oklch(55.985% 0.15183 248.312);
+  --color-secondary: oklab(55.98% -0.06 -0.14);
+
+  --action: oklab(36.3% 0.13 0.07);
+  --fantasy: oklab(88.3% -0.01 0.17);
+  --science: oklab(33.83% 0.12 -0.11);
 
   --spacing-1: 0.25rem;
   --spacing-2: calc(var(--spacing-1) * 2);
@@ -43,8 +47,13 @@
   --spacing-8: calc(var(--spacing-1) * 8);
   --spacing-9: calc(var(--spacing-1) * 9);
   --spacing-10: calc(var(--spacing-1) * 10);
+  --spacing-11: calc(var(--spacing-1) * 11);
+  --spacing-12: calc(var(--spacing-1) * 12);
 
   --font-main: 'Oxygen', sans-serif;
+  --font-action: 'Anton', sans-serif;
+  --font-fantasy: 'Caveat Variable', cursive;
+  --font-science: 'Orbitron Variable', sans-serif;
 
   --font-sm: 0.75rem;
   --font-md: 1rem;

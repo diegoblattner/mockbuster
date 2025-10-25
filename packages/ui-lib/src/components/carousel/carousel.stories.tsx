@@ -16,3 +16,11 @@ export const Primary: Story = {
 		children: moviesData.map((m) => <MovieCard key={m.id} {...m} />),
 	},
 };
+
+export const Empty: Story = {
+	args: {
+		title: "Mockbuster carousel",
+		children: [],
+		emptyText: "Nothing to show for now...",
+	},
+};

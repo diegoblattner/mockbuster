@@ -1,5 +1,10 @@
 import "./global.css";
 
+import "@fontsource/oxygen";
+import "@fontsource/anton";
+import "@fontsource-variable/caveat";
+import "@fontsource-variable/orbitron";
+
 export { Carousel } from "./components/carousel";
 export { Container } from "./components/container";
 export { Footer } from "./components/footer";

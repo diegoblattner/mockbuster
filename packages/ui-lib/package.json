@@ -9,11 +9,13 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc -b && vite build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fontsource-variable/caveat": "^5.2.8",
+    "@fontsource-variable/orbitron": "^5.2.8",
+    "@fontsource/anton": "^5.2.7",
     "@fontsource/oxygen": "^5.2.8",
     "css-preflight": "^2.0.1",
     "react": "^19.1.1",

@@ -1,3 +1,4 @@
+import type { ComponentProps } from "react";
 import type { ApiMovie } from "shared";
 import { Carousel, Container } from "ui-lib";
 import { MovieCardLink } from "../../../components/movie-card-link";
@@ -5,7 +6,7 @@ import { MovieCardLink } from "../../../components/movie-card-link";
 type CategoryCarouselProps = Readonly<{
 	name: string;
 	id: number;
-	style: string;
+	style: ComponentProps<typeof Container>["style"];
 	movies: ApiMovie[];
 	imgLazy: boolean;
 }>;
@@ -13,22 +14,19 @@ type CategoryCarouselProps = Readonly<{
 export function CategoryCarousel({
 	name,
 	movies = [],
+	style,
 	imgLazy,
 }: CategoryCarouselProps) {
 	return (
-		<Container>
-			<Carousel title={name}>
-				{movies.length > 0 ? (
-					movies.map((movie, i) => (
-						<MovieCardLink
-							key={movie.id}
-							movie={movie}
-							imgLazy={imgLazy || i > 5}
-						/>
-					))
-				) : (
-					<p>No movies found in {name}...</p>
-				)}
+		<Container style={style}>
+			<Carousel title={name} emptyText={`No movies found in ${name}...`}>
+				{movies.map((movie, i) => (
+					<MovieCardLink
+						key={movie.id}
+						movie={movie}
+						imgLazy={imgLazy || i > 5}
+					/>
+				))}
 			</Carousel>
 		</Container>
 	);

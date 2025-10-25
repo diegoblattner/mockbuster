@@ -1,6 +1,10 @@
 import type { Preview } from "@storybook/react-vite";
-// import "css-preflight/preflight.css"; // css reset
+
 import "../src/global.css";
+import "@fontsource/oxygen";
+import "@fontsource/anton";
+import "@fontsource-variable/caveat";
+import "@fontsource-variable/orbitron";
 
 const preview: Preview = {
 	parameters: {
