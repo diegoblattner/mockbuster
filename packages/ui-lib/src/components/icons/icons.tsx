@@ -2,6 +2,7 @@ import "./styles.css";
 
 type IconProps = Readonly<{
 	className?: string;
+	rotate?: "180";
 	title?: string;
 }>;
 
@@ -73,6 +74,31 @@ export function PopcornIcon({
 			<path d="M10 22 9 8"></path>
 			<path d="m14 22 1-14"></path>
 			<path d="M20 8c.5 0 .9.4.8 1l-2.6 12c-.1.5-.7 1-1.2 1H7c-.6 0-1.1-.4-1.2-1L3.2 9c-.1-.6.3-1 .8-1Z"></path>
+		</svg>
+	);
+}
+
+export function ChevronLeftIcon({
+	className = "",
+	rotate,
+	title = "chevron left icon",
+}: IconProps) {
+	const clx = rotate ? `icon--${rotate}` : "";
+	return (
+		<svg
+			className={`icon ${clx} ${className}`}
+			stroke="currentColor"
+			fill="none"
+			strokeWidth="2"
+			viewBox="0 0 24 24"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			height="32px"
+			width="32px"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<title>{title}</title>
+			<path d="m15 18-6-6 6-6"></path>
 		</svg>
 	);
 }

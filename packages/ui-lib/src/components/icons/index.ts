@@ -1,1 +1,1 @@
-export { FilmIcon } from "./icons";
+export * from "./icons";

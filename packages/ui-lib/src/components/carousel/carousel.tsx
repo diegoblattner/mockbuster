@@ -1,4 +1,5 @@
 import { type ReactNode, useCallback, useRef } from "react";
+import { ChevronLeftIcon } from "../icons";
 import "./styles.css";
 
 type CarouselProps = Readonly<{
@@ -35,7 +36,7 @@ export function Carousel({
 							onClick={() => scroll("left")}
 							className="carousel__arrows-container__arrow"
 						>
-							‹
+							<ChevronLeftIcon title="arrow left" />
 						</button>
 
 						<button
@@ -44,7 +45,7 @@ export function Carousel({
 							onClick={() => scroll("right")}
 							className="carousel__arrows-container__arrow carousel__arrows-container__arrow--forward"
 						>
-							›
+							<ChevronLeftIcon rotate="180" title="arrow right" />
 						</button>
 					</div>
 				)}

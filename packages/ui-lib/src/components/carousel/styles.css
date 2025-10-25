@@ -24,17 +24,17 @@
 }
 
 .carousel__arrows-container__arrow {
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  border-radius: 4px; 
+  border-radius: 8px; 
   border: 1px solid var(--gray-10);
   width: 2.25rem; 
   height: 2.25rem; 
   background-color: var(--white);
-  color: var(--gray-80);
+  color: var(--gray-40);
   opacity: 0.9;
   transition-duration: scale 200ms ease-out;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1); 
@@ -42,12 +42,12 @@
 
 .carousel__arrows-container__arrow:hover, .carousel__arrows-container__arrow:focus-visible {
   opacity: 1;
-  scale: 1.03;
+  scale: 1.02;
 }
 
 .carousel__arrows-container__arrow:active {
   opacity: 1;
-  scale: .98;
+  scale: .99;
 }
 
 /* Hide scrollbar for carousel */

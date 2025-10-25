@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import type { ApiMovie } from "shared";
-import { Container, Cta, MovieOverview } from "ui-lib";
-import { AddListIcon } from "ui-lib/src/components/icons/icons";
+import { AddListIcon, Container, Cta, MovieOverview } from "ui-lib";
 import { postWatchlist } from "../../api/watchlist";
 import { useAppContext } from "../../app-context";
 import { Layout } from "../layout";
