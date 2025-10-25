@@ -27,7 +27,7 @@ export async function preloadData(req: Request): Promise<AppProps> {
 	]);
 
 	return {
-		url: "/",
+		url: req.baseUrl,
 		categories: homePageCategories.map((c, i) => ({
 			...c,
 			data: movies[i] ?? {
