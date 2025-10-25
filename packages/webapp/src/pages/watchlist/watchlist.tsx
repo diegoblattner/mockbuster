@@ -1,4 +1,4 @@
-import { Container } from "ui-lib";
+import { Container, Grid } from "ui-lib";
 import { useAppContext } from "../../app-context";
 import { HomeLink } from "../../components/home-link";
 import { MovieCardLink } from "../../components/movie-card-link";
@@ -11,12 +11,14 @@ export default function Watchlist() {
 		<Layout title="Watchlist">
 			<Container>
 				<HomeLink />
-				<h2>Movies in your watchlist ({watchlist.total_results})</h2>
-				<div>
+				<Grid
+					title={`Movies in your watchlist (${watchlist.total_results})`}
+					emptyText="There are movies are no movies saved..."
+				>
 					{watchlist.results.map((movie, i) => (
 						<MovieCardLink key={movie.id} movie={movie} imgLazy={i > 11} />
 					))}
-				</div>
+				</Grid>
 			</Container>
 		</Layout>
 	);

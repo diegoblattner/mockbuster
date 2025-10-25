@@ -1,0 +1,19 @@
+.grid {
+}
+
+.grid__title {
+  font-size: var(--font-xl);
+  margin-block: var(--spacing-6);
+}
+
+.grid__container {
+  display: grid;
+  grid-gap: var(--spacing-6);
+  grid-template-columns: repeat(auto-fill, 200px);
+}
+
+.grid__empty {
+  font-style: italic;
+  margin-block: var(--spacing-12);
+  text-align: center;
+}
