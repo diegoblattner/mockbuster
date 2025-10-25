@@ -102,3 +102,24 @@ export function ChevronLeftIcon({
 		</svg>
 	);
 }
+
+export function CheckIcon({ className = "", title = "check icon" }: IconProps) {
+	return (
+		<svg
+			className={className}
+			stroke="currentColor"
+			fill="none"
+			strokeWidth="2"
+			viewBox="0 0 24 24"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			height="32px"
+			width="32px"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<title>{title}</title>
+			<circle cx="12" cy="12" r="10"></circle>
+			<path d="m9 12 2 2 4-4"></path>
+		</svg>
+	);
+}

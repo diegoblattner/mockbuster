@@ -10,7 +10,7 @@ export default function Watchlist() {
 		<Layout title="Watchlist" showHomeLink>
 			<Container>
 				<Grid
-					title={`Movies in your watchlist (${watchlist.total_results})`}
+					title={`Movies on your watchlist (${watchlist.total_results})`}
 					emptyText="There are movies are no movies saved..."
 				>
 					{watchlist.results.map((movie, i) => (

@@ -81,7 +81,7 @@ export default function MovieDetails() {
 			<Container>
 				<MovieOverview {...selectedMovie}>
 					{watchlist.total_results >= 20 ? (
-						<p>There are alreay too many items in your watchlist.</p>
+						<p>There are alreay too many items on your watchlist.</p>
 					) : (
 						<Cta
 							type="button"

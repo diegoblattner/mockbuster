@@ -4,18 +4,24 @@
   padding-block: var(--spacing-4);
 }
 
-.header__brand {
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__content__brand {
   display: flex;
   gap: var(--spacing-4);
   font-size: var(--font-xl);
   align-items: center;
 }
 
-.header__brand__logo {
+.header__content__brand__logo {
   margin-block: calc(var(--spacing-1) * -1);
   translate: 0 -2px;
 }
 
-.header__brand__title {
+.header__content__brand__title {
   color: var(--white);
 }

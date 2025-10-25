@@ -17,3 +17,4 @@ export * from "./components/logo";
 export * from "./components/movie-card";
 export * from "./components/movie-overview";
 export * from "./components/page";
+export * from "./components/tooltip";
