@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { Link } from "react-router";
 import type { ApiMovieMain } from "shared";
 import { MovieCard } from "ui-lib";
-import { useAppContext } from "../app-context";
+import { useAppContext } from "../hooks/app-context";
 import { goToMovieDetails } from "../pages/movie-details";
 
 type MovieCardLinkProps = Readonly<{

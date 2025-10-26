@@ -22,9 +22,21 @@
   font-size: var(--font-xl);
 }
 
-
 .movie-overview__desc__actions {
   align-self: center;
+}
+
+.movie-overview__desc__title--action {
+    font-family: var(--font-action);
+}
+
+.movie-overview__desc__title--fantasy {
+  font-family: var(--font-fantasy);
+  font-size: var(--font-xxl);
+}
+
+.movie-overview__desc__title--science {
+  font-family: var(--font-science);
 }
 
 @media (min-width: 640px) {
@@ -44,14 +56,9 @@
   .movie-overview__desc__title {
     font-size: var(--font-xxl);
   }
-  .movie-overview__desc__title--action {
-    font-family: var(--font-action);
-  }
+
   .movie-overview__desc__title--fantasy {
-    font-family: var(--font-fantasy);
-  }
-  .movie-overview__desc__title--science {
-    font-family: var(--font-science);
+    font-size: var(--font-xxxl);
   }
 
   .movie-overview__desc__actions {
@@ -59,6 +66,3 @@
   }
 }
 
-.movie-overview--action .movie-overview__desc__title {
-  font-size: var(--font-xxl);
-}

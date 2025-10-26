@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import type { ApiMovie } from "shared";
 import { AddListIcon, Container, Cta, MovieOverview } from "ui-lib";
 import { useMutateWatchlist } from "../../api/watchlist-queries";
-import { useAppContext } from "../../app-context";
+import { useAppContext } from "../../hooks/app-context";
 import { Layout } from "../layout";
 import { RecommendationsCarousel } from "./recommendations-carousel";
 
@@ -46,7 +46,10 @@ export default function MovieDetails() {
 					)}
 				</MovieOverview>
 				<br />
-				<RecommendationsCarousel movieId={selectedMovie.id} />
+				<RecommendationsCarousel
+					genreId={selectedMovie.genre_ids?.[0] ?? selectedMovie.genre_ids?.[0]}
+					movieId={selectedMovie.id}
+				/>
 			</Container>
 		</Layout>
 	);

@@ -4,7 +4,6 @@ import {
 	type Dispatch,
 	type ReactNode,
 	type SetStateAction,
-	use,
 	useState,
 } from "react";
 import type {
@@ -31,7 +30,9 @@ type ContextWithDipatch = [
 	Dispatch<SetStateAction<ContextProps>>,
 ];
 
-const AppContext = createContext<ContextWithDipatch | undefined>(undefined);
+export const AppContext = createContext<ContextWithDipatch | undefined>(
+	undefined,
+);
 
 export function AppProvider({
 	children,
@@ -41,13 +42,4 @@ export function AppProvider({
 	return (
 		<AppContext.Provider value={stateAndSetter}>{children}</AppContext.Provider>
 	);
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export function useAppContext() {
-	const data = use(AppContext);
-
-	if (!data) throw new Error("useAppContext used outside of AppProvide");
-
-	return data;
 }

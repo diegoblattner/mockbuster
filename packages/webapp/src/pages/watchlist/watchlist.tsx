@@ -1,6 +1,6 @@
 import { Container, Grid } from "ui-lib";
-import { useAppContext } from "../../app-context";
 import { MovieCardLink } from "../../components/movie-card-link";
+import { useAppContext } from "../../hooks/app-context";
 import { Layout } from "../layout";
 
 export default function Watchlist() {

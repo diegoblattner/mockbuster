@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { AppRoutes } from "shared";
 import { Cta, Hero } from "ui-lib";
-import { useAppContext } from "../../app-context";
 import { CategoryCarousel } from "../../components/category-carousel";
+import { useAppContext } from "../../hooks/app-context";
 import { Layout } from "../layout";
 
 export default function Home() {

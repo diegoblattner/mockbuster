@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import type { ApiMovie } from "shared";
-import { useAppContext } from "../app-context";
+import { useAppContext } from "../hooks/app-context";
 import { postWatchlist } from "./watchlist";
 
 export function useMutateWatchlist() {

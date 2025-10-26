@@ -15,7 +15,7 @@ export function RecommendationsCarousel({
 
 	return (
 		<CategoryCarousel
-			name="Other recommendations"
+			name="Recommendations"
 			imgLazy
 			id={genreId}
 			movies={data?.results ?? EMPTY}

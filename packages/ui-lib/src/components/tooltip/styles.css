@@ -9,7 +9,7 @@
   background: rgba(0, 0, 0, 0.6);
   color: var(--white);
   border-radius: 8px;
-  animation: fade-in .3s ease-out .2s forwards;
+  animation: fade-in .3s ease-out forwards;
   translate: 0 -10px;
   opacity: 0;
   scale: 0.8;
