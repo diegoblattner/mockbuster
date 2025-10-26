@@ -12,12 +12,12 @@ export function WatchlistLink() {
 		<Tooltip
 			show={showTooltip}
 			content={
-				<div className="flex">
+				<div className="inline-flex">
 					<CheckIcon className="secondary" /> Updated!
 				</div>
 			}
 		>
-			<Link to={AppRoutes.Watchlist} className="flex">
+			<Link to={AppRoutes.Watchlist} className="inline-flex">
 				<PopcornIcon /> Watchlist ({watchlist.results.length})
 			</Link>
 		</Tooltip>

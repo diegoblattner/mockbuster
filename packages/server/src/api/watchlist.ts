@@ -39,7 +39,7 @@ watchlistRouter.post(
 			watchlist: addOrRemove,
 		});
 
-		res.json(result);
+		res.json(result ?? { success: false });
 	}),
 );
 

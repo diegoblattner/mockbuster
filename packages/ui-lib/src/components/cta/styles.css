@@ -12,6 +12,7 @@
   justify-content: center;
   gap: var(--spacing-2);
   height: 48px;
+  font-size: var(--font-md);
 }
 
 .cta:hover {
