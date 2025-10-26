@@ -1,6 +1,7 @@
 .header {
   display: flex;
   background: var(--black);
+  color: var(--white);
   padding-block: var(--spacing-4);
 }
 
@@ -23,5 +24,4 @@
 }
 
 .header__content__brand__title {
-  color: var(--white);
 }
