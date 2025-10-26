@@ -132,6 +132,7 @@ type UndefinedKeys = Undefined<ApiMovieDetails & ApiMovie>;
 export type ApiMovieMain = UndefinedKeys & (ApiMovie | ApiMovieDetails);
 
 export type ApiStatus = {
-	status_code: 0 | 1;
+	success: boolean;
+	status_code: number;
 	status_message: string;
 };

@@ -1,6 +1,10 @@
 import express from "express";
 import { accountId } from "shared";
-import { addToWatchlist, fetchWatchlist } from "../api-tmdb/watchlist.ts";
+import {
+	addToWatchlist,
+	clearWatchlist,
+	fetchWatchlist,
+} from "../api-tmdb/watchlist.ts";
 import { ClientSafeError, withErrorHandler } from "./common.ts";
 
 const watchlistRouter = express.Router();
@@ -9,6 +13,14 @@ watchlistRouter.get(
 	"/watchlist",
 	withErrorHandler(async (_req, res) => {
 		const result = await fetchWatchlist(accountId);
+		res.json(result);
+	}),
+);
+
+watchlistRouter.get(
+	"/watchlist/clear",
+	withErrorHandler(async (_req, res) => {
+		const result = await clearWatchlist(accountId);
 		res.json(result);
 	}),
 );
