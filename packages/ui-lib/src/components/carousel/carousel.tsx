@@ -41,7 +41,7 @@ export function Carousel({
 
 						<button
 							type="button"
-							aria-label="scroll forwards"
+							aria-label="scroll forward"
 							onClick={() => scroll("right")}
 							className="carousel__arrows-container__arrow carousel__arrows-container__arrow--forward"
 						>

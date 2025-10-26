@@ -11,12 +11,15 @@
     "preview": "npm run preview -w packages/server",
     "dev:client": "npm run dev -w packages/webapp",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "npm run storybook -w packages/ui-lib"
+    "storybook": "npm run storybook -w packages/ui-lib",
+    "e2e": "npm run e2e -w packages/e2e",
+    "e2e:report": "npm run show-report -w packages/e2e"
   },
   "workspaces": [
     "packages/shared",
     "packages/ui-lib",
     "packages/webapp",
-    "packages/server"
+    "packages/server",
+    "packages/e2e"
   ]
 }
