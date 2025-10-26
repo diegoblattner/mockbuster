@@ -1,16 +1,24 @@
-import { expect, type Page } from "@playwright/test";
+import type { ApiMovie } from "shared";
 
-export async function checkConsoleErrors(page: Page, fn: () => void) {
-	const consoleErrors: string[] = [];
-	page.on("console", (msg: { type: () => string; text: () => string }) => {
-		if (msg.type() === "error") {
-			console.log(`RECEIVED CONSOLE ERROR: "${msg.text()}"`);
-			consoleErrors.push(msg.text());
-		}
-	});
+const url = process.env.URL ?? "http://localhost";
+const port = process.env.PORT ?? 5174;
 
-	await fn();
+export const SITE_URL = `${url}:${port}`;
 
-	// expects no errors in the console
-	expect(consoleErrors.length).toEqual(0);
-}
+export const mockMovie: ApiMovie = {
+	adult: false,
+	backdrop_path: "/1leYKN0DPNffpldGnCWnbXaiWoD.jpg",
+	genre_ids: [28, 53],
+	id: 1305717,
+	original_language: "en",
+	original_title: "Hunting Grounds",
+	overview:
+		"Desperate to find refuge for her children, Chloe Marvino runs away from her Mafia tied husband, and finds shelter in a cabin with a recluse drifter named Jake. But as her husband's henchmen draw closer to her, it turns out that Jake is the biggest enemy of them all.",
+	popularity: 250.7735,
+	poster_path: "/cgZjpqRQt9sk6XMCwZ3B1NPAaoy.jpg",
+	release_date: "2025-05-16",
+	title: "Hunting Grounds",
+	video: false,
+	vote_average: 0,
+	vote_count: 0,
+};
