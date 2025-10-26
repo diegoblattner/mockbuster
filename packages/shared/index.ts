@@ -1,4 +1,4 @@
-import type { Genre } from "./movie-details";
+import type { ApiMovieDetails, Genre } from "./movie-details";
 
 export type { ApiMovieDetails } from "./movie-details";
 export { AppRoutes } from "./routes.ts";
@@ -123,6 +123,13 @@ export type ApiMovie = {
 	vote_average: number;
 	vote_count: number;
 };
+
+type Undefined<T> = {
+	[k in keyof T]?: T[k];
+};
+// use the difference between types as possibly undefined
+type UndefinedKeys = Undefined<ApiMovieDetails & ApiMovie>;
+export type ApiMovieMain = UndefinedKeys & (ApiMovie | ApiMovieDetails);
 
 export type ApiStatus = {
 	status_code: 0 | 1;

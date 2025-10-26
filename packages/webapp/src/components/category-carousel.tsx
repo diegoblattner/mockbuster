@@ -1,12 +1,12 @@
 import { type ComponentProps, Fragment, Suspense } from "react";
 import type { ApiMovie } from "shared";
 import { Carousel, Container } from "ui-lib";
-import { MovieCardLink } from "../../../components/movie-card-link";
+import { MovieCardLink } from "./movie-card-link";
 
 type CategoryCarouselProps = Readonly<{
 	name: string;
-	id: number;
-	style: ComponentProps<typeof Container>["style"];
+	id?: number;
+	style?: ComponentProps<typeof Container>["style"];
 	movies: ApiMovie[];
 	imgLazy: boolean;
 }>;

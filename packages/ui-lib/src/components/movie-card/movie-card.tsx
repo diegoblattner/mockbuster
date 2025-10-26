@@ -1,8 +1,8 @@
-import type { ApiMovie } from "shared";
+import type { ApiMovieMain } from "shared";
 import "./styles.css";
 
 type MovieCardProps = Readonly<
-	ApiMovie & {
+	ApiMovieMain & {
 		imgLazy?: boolean;
 		onClick?: () => void;
 		href?: string;

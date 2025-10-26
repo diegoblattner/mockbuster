@@ -2,8 +2,8 @@ import { Link } from "react-router";
 import { AppRoutes } from "shared";
 import { Cta, Hero } from "ui-lib";
 import { useAppContext } from "../../app-context";
+import { CategoryCarousel } from "../../components/category-carousel";
 import { Layout } from "../layout";
-import { CategoryCarousel } from "./category-carousel/category-carousel";
 
 export default function Home() {
 	const [{ categories, watchlist }] = useAppContext();

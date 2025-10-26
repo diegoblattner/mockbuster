@@ -11,7 +11,7 @@ import type {
 	ApiListResult,
 	ApiListResultTotal,
 	ApiMovie,
-	ApiMovieDetails,
+	ApiMovieMain,
 } from "shared";
 import type { Container } from "ui-lib";
 
@@ -22,7 +22,7 @@ export type ContextProps = {
 		style: ComponentProps<typeof Container>["style"];
 		data: ApiListResult<ApiMovie>;
 	}[];
-	selectedMovie: ApiMovie | ApiMovieDetails | undefined;
+	selectedMovie: ApiMovieMain | undefined;
 	watchlist: ApiListResultTotal<ApiMovie>;
 };
 

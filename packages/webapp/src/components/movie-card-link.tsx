@@ -1,19 +1,19 @@
 import { useCallback } from "react";
 import { Link } from "react-router";
-import type { ApiMovie } from "shared";
+import type { ApiMovieMain } from "shared";
 import { MovieCard } from "ui-lib";
 import { useAppContext } from "../app-context";
 import { goToMovieDetails } from "../pages/movie-details";
 
 type MovieCardLinkProps = Readonly<{
-	movie: ApiMovie;
+	movie: ApiMovieMain;
 	imgLazy: boolean;
 }>;
 
 export function MovieCardLink({ movie, imgLazy }: MovieCardLinkProps) {
 	const [, setValues] = useAppContext();
 	const onMovieSelected = useCallback(
-		(movie: ApiMovie) => {
+		(movie: ApiMovieMain) => {
 			setValues((prev) => ({
 				...prev,
 				selectedMovie: movie,

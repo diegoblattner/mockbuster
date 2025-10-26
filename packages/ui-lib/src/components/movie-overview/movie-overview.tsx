@@ -1,22 +1,10 @@
 import type { ReactNode } from "react";
-import {
-	type ApiMovie,
-	type ApiMovieDetails,
-	getGenreLabels,
-	getGenreStyle,
-} from "shared";
+import { type ApiMovieMain, getGenreLabels, getGenreStyle } from "shared";
 import "./styles.css";
 
-type Undefined<T> = {
-	[k in keyof T]?: T[k];
+type MovieOverviewProps = ApiMovieMain & {
+	children?: ReactNode;
 };
-// use the difference between types as possibly undefined
-type UndefinedKeys = Undefined<ApiMovieDetails & ApiMovie>;
-
-type MovieOverviewProps = UndefinedKeys &
-	(ApiMovieDetails | ApiMovie) & {
-		children?: ReactNode;
-	};
 
 export function MovieOverview({
 	title,

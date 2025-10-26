@@ -7,6 +7,7 @@ import {
 	StaticRouter,
 } from "react-router";
 import { AppRoutes } from "shared";
+import { AppQueryProvider } from "./api/query-client";
 import { AppProvider, type ContextProps } from "./app-context";
 import { Home } from "./pages/home";
 import { MovieDetails } from "./pages/movie-details";
@@ -29,21 +30,23 @@ export default function App({
 }: AppProps) {
 	return (
 		<AppProvider {...ctx}>
-			<RouterComponent location={url}>
-				<Routes>
-					<Route index Component={Home} loader={loadHomeData} />
-					<Route
-						path={AppRoutes.MovieDetails}
-						Component={MovieDetails}
-						loader={loadMovieDetailsData}
-					/>
-					<Route
-						path={AppRoutes.Watchlist}
-						Component={Watchlist}
-						// loader={loadMovieDetailsData}
-					/>
-				</Routes>
-			</RouterComponent>
+			<AppQueryProvider>
+				<RouterComponent location={url}>
+					<Routes>
+						<Route index Component={Home} loader={loadHomeData} />
+						<Route
+							path={AppRoutes.MovieDetails}
+							Component={MovieDetails}
+							loader={loadMovieDetailsData}
+						/>
+						<Route
+							path={AppRoutes.Watchlist}
+							Component={Watchlist}
+							// loader={loadMovieDetailsData}
+						/>
+					</Routes>
+				</RouterComponent>
+			</AppQueryProvider>
 		</AppProvider>
 	);
 }
