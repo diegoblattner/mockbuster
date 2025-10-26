@@ -4,7 +4,7 @@ import { ChevronLeftIcon } from "ui-lib";
 
 export function HomeLink() {
 	return (
-		<Link to={AppRoutes.Home} className="flex">
+		<Link to={AppRoutes.Home} className="inline-flex">
 			<ChevronLeftIcon /> Back to the home page
 		</Link>
 	);

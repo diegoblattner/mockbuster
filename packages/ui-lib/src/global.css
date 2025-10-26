@@ -81,8 +81,8 @@ body {
   background-color: var(--white);
 }
 
-.flex {
-  display: flex;
+.inline-flex {
+  display: inline-flex;
   align-items: center;
   gap: var(--spacing-2);
 }

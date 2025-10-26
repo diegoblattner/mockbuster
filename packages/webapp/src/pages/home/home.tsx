@@ -21,13 +21,13 @@ export default function Home() {
 				subtext="The best movies and the best reviews to guide you on your next binge watch session!"
 			>
 				{watchlist.total_results === 0 && (
-					<p>Start adding movies to your watch list and don't miss a beat.</p>
+					<p>Start adding movies to your watchlist and don't miss a beat.</p>
 				)}
 				{watchlist.total_results > 0 && (
 					<>
 						<p>Check out the movies you have already saved!</p>
 						<Cta as={Link} to={AppRoutes.Watchlist}>
-							Go to your watch list
+							Go to your watchlist
 						</Cta>
 					</>
 				)}
