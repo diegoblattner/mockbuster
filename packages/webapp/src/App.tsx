@@ -1,4 +1,3 @@
-import "./index.css";
 import {
 	BrowserRouter,
 	type LoaderFunction,
@@ -9,6 +8,7 @@ import {
 import { AppRoutes } from "shared";
 import { AppQueryProvider } from "./api/query-client";
 import { AppProvider, type ContextProps } from "./app-context";
+import { ScrollTop } from "./components/scroll-top";
 import { Home } from "./pages/home";
 import { MovieDetails } from "./pages/movie-details";
 import { Watchlist } from "./pages/watchlist";
@@ -32,6 +32,7 @@ export default function App({
 		<AppProvider {...ctx}>
 			<AppQueryProvider>
 				<RouterComponent location={url}>
+					<ScrollTop />
 					<Routes>
 						<Route index Component={Home} loader={loadHomeData} />
 						<Route

@@ -1,6 +1,5 @@
 import { type ReactNode, useCallback, useRef } from "react";
 import { ChevronLeftIcon } from "../icons";
-import "./styles.css";
 
 type CarouselProps = Readonly<{
 	title: string;

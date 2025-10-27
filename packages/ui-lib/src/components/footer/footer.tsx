@@ -1,5 +1,4 @@
 /** biome-ignore-all lint/correctness/useUniqueElementIds: <explanation> */
-import "./styles.css";
 
 export function Footer() {
 	return (

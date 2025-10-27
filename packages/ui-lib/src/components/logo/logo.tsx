@@ -1,4 +1,3 @@
-import "./styles.css";
 import { FilmIcon } from "../icons";
 
 type LogoProps = Readonly<{

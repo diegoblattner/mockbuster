@@ -1,5 +1,4 @@
 import type { ApiMovieMain } from "shared";
-import "./styles.css";
 
 type MovieCardProps = Readonly<
 	ApiMovieMain & {

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import "./styles.css";
 
 type GridProps = {
 	title: ReactNode;

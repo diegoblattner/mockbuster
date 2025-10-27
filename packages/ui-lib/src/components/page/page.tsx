@@ -2,7 +2,6 @@ import { type ReactNode, useMemo } from "react";
 import { Footer } from "../footer";
 import { Header } from "../header";
 import { Logo } from "../logo";
-import "./styles.css";
 
 type PageProps = Readonly<{
 	preTitle?: string;

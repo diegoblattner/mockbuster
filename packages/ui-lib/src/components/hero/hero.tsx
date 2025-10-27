@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Container } from "../container";
-import "./styles.css";
 
 type HeroProps = Readonly<{
 	mainText: ReactNode;

@@ -1,5 +1,3 @@
-import "./styles.css";
-
 type IconProps = Readonly<{
 	className?: string;
 	rotate?: "180";

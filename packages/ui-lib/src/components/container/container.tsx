@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./styles.css";
+
 import type { GenreStyle } from "shared";
 
 type ContainerProps = Readonly<{

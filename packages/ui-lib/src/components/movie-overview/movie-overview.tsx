@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { type ApiMovieMain, getGenreLabels, getGenreStyle } from "shared";
-import "./styles.css";
 
 type MovieOverviewProps = ApiMovieMain & {
 	children?: ReactNode;
