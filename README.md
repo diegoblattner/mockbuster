@@ -1,6 +1,7 @@
 # MOCKBUSTER
 
 A small website that displays movies from TMDB and lets you add them to a watchlist.
+The project is structured as a monorepo using npm workspaces.
 
 ## Running the project
 ### .env file
@@ -27,11 +28,11 @@ After the dependecies are installed and the `.env` file is in place, you can run
 
 `npm run dev` - development mode to run in localhost (default port is 5174)
 
-Build: `npm run build` - buils the app
+Build: `npm run build` - buidls the app
 
 `npm run preview` - Runs the bundled app
 
 `npm run storybook` - Storybook ui library
 
-`npm run e2e` - Playwright tests with
+`npm run e2e` - Playwright tests
 
